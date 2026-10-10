@@ -1,88 +1,241 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Swap SUI to USDC, USDT or ETH | Sui Swap</title>
-<meta name="description" content="Swap SUI to USDC, USDT or ETH. Open your swap, review the rate and network, understand the fees, and send SUI with a clear route to your receiving wallet.">
-<link rel="canonical" href="https://insert_url/">
-<meta property="og:title" content="Swap SUI to USDC, USDT or ETH | Sui Swap">
-<meta property="og:description" content="Swap SUI with the right receiving network. Explore popular pairs, understand gas and service fees, and open your Sui swap.">
-<meta property="og:url" content="https://insert_url/">
+<title>Sui Swap — Trade Tokens on Sui's Parallel Network</title>
+<meta name="description" content="Run a Sui Swap across Cetus and Turbos, Sui's leading DEXes, and settle in sub-second finality on an object-centric Move chain. Check the quote, the slippage tolerance and the SUI gas cost before you sign, and keep your keys the whole time.">
+<link rel="canonical" href="https://swap-sui.github.io/">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swap SUI to USDC, USDT or ETH">
-<meta name="twitter:description" content="Choose your SUI swap route, check the receiving network and review the total before sending.">
-<meta name="theme-color" content="#4DA2FF">
-<link rel="icon" href="sui.png" type="image/png">
+<meta property="og:title" content="Sui Swap">
+<meta property="og:url" content="https://swap-sui.github.io/">
+<meta property="og:image" content="https://swap-sui.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sui Swap">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Albert+Sans:wght@500;600;700&display=swap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://swap-sui.github.io/#website", "url": "https://swap-sui.github.io/", "name": "Sui Swap — Trade Tokens on Sui's Parallel Network"}, {"@type": "WebPage", "@id": "https://swap-sui.github.io/#webpage", "url": "https://swap-sui.github.io/", "name": "Sui Swap — Trade Tokens on Sui's Parallel Network", "isPartOf": {"@id": "https://swap-sui.github.io/#website"}, "description": "Run a Sui Swap across Cetus and Turbos, Sui's leading DEXes, and settle in sub-second finality on an object-centric Move chain. Check the quote, the slippage tolerance and the SUI gas cost before you sign, and keep your keys the whole time.", "datePublished": "2026-10-10", "dateModified": "2026-10-10"}, {"@type": "SoftwareApplication", "name": "Sui Swap", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://swap-sui.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Swaps"}, {"@type": "ListItem", "position": 3, "name": "Sui Swap"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a swap on the Sui network?", "acceptedAnswer": {"@type": "Answer", "text": "It is an on-chain trade between two tokens, executed by a decentralized exchange such as Cetus or Turbos on Sui rather than by a custodial party. You keep your keys the entire time."}}, {"@type": "Question", "name": "Which DEXes handle trading on Sui?", "acceptedAnswer": {"@type": "Answer", "text": "Cetus and Turbos Finance carry most of the liquidity on Sui today, each running automated market maker pools you trade against directly through your wallet."}}, {"@type": "Question", "name": "Why does a trade settle so fast on Sui?", "acceptedAnswer": {"@type": "Answer", "text": "Sui's object-centric Move model lets independent transactions execute in parallel instead of queuing through one global sequence, so trades settle with sub-second finality even when the network is busy."}}, {"@type": "Question", "name": "What does trading on Sui cost?", "acceptedAnswer": {"@type": "Answer", "text": "You pay a small network gas fee in SUI plus the pool's own swap fee, typically a fraction of a percent of the trade size. Both are usually negligible compared with the trade itself."}}, {"@type": "Question", "name": "How do I avoid bad slippage when trading on Sui?", "acceptedAnswer": {"@type": "Answer", "text": "Set a slippage tolerance that matches the pool's depth, check the price impact shown before you sign, and size large trades against pools with enough liquidity, splitting across pools when needed."}}, {"@type": "Question", "name": "Do I need an account to trade on Sui?", "acceptedAnswer": {"@type": "Answer", "text": "No. You connect a self-custody wallet and trade on-chain, with no sign-up and no custodian holding your funds at any point."}}, {"@type": "Question", "name": "Can I trade stablecoins on Sui?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. USDC and other stablecoin pairs are among the deepest pools on Sui, which keeps price impact low even for sizable trades between dollar-denominated assets."}}]}]}</script>
 <style>
-:root{--wave:#4da2ff;--deep:#0758b5;--navy:#102d4e;--muted:#49627c;--line:#d7e7f6;--mist:#edf7ff}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;color:var(--navy);background:#f8fcff;font:16px/1.65 "Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}a{color:var(--deep);text-underline-offset:4px}button{font:inherit}h1,h2,h3,p{margin:0}h1,h2,h3{line-height:1.12;letter-spacing:-.045em}h2{font-size:clamp(28px,3vw,38px)}h3{font-size:21px;letter-spacing:-.025em}p{color:var(--muted)}img{object-fit:contain}a:focus-visible,button:focus-visible,[role=link]:focus-visible,summary:focus-visible{outline:3px solid #0758b5;outline-offset:5px}.rivulet-wrap{width:min(1120px,calc(100% - 48px));margin:auto}.rivulet-skip{position:absolute;left:16px;top:-80px;padding:10px;background:white;z-index:5}.rivulet-skip:focus{top:12px}.rivulet-top{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:23px 0;border-bottom:1px solid var(--line)}.rivulet-mark{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:750;letter-spacing:-.8px;color:var(--navy);text-decoration:none}.rivulet-mark img{width:36px;height:36px}.rivulet-top nav{display:flex;align-items:center;gap:25px}.rivulet-top nav>a:not(.rivulet-go){font-size:14px;text-decoration:none;font-weight:600}.rivulet-go{display:inline-flex;align-items:center;justify-content:center;gap:26px;background:var(--navy);color:white;text-decoration:none;border-radius:13px;padding:13px 22px;font-weight:650;box-shadow:0 5px 0 #102d4e0a;transition:background .2s,transform .2s}.rivulet-go:hover{background:var(--deep);transform:translateY(-2px)}.rivulet-go span{font-size:21px;line-height:1}.rivulet-hero{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:56px;padding:58px 0 38px}.rivulet-kicker{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;color:var(--deep);margin-bottom:19px}.rivulet-kicker:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--wave);box-shadow:0 0 0 5px #4da2ff18}h1{font-size:clamp(58px,7.4vw,90px);letter-spacing:-.07em;margin-bottom:20px}h1 span{color:var(--deep)}.rivulet-intro{font-size:19px;max-width:460px;margin-bottom:25px}.rivulet-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}.rivulet-tags span{font-size:12px;font-weight:650;padding:6px 11px;border:1px solid var(--line);border-radius:30px;background:white}.rivulet-console{position:relative;border:1px solid #fff;border-radius:29px;background:linear-gradient(145deg,#ffffffed,#e9f5ffed);padding:25px;box-shadow:0 20px 60px #368ad523,0 0 0 9px #dceeff66;cursor:pointer;transition:transform .25s,box-shadow .25s;isolation:isolate}.rivulet-console:hover{transform:translateY(-3px);box-shadow:0 24px 65px #368ad535,0 0 0 9px #dceeff88}.rivulet-console-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.rivulet-console-title strong{font-size:19px;letter-spacing:-.5px}.rivulet-console-title span{font-size:11px;background:#dbedff;color:#174f89;padding:4px 10px;border-radius:20px;font-weight:700}.rivulet-terminal{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1px solid #d9e9f8;border-radius:17px;padding:18px}.rivulet-terminal small{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}.rivulet-terminal strong{font-size:25px;letter-spacing:-.8px}.rivulet-token{display:flex;align-items:center;gap:9px;font-weight:750}.rivulet-token img{width:35px;height:35px}.rivulet-flow{position:relative;height:92px;display:flex;align-items:center;justify-content:center}.rivulet-flow svg{position:absolute;width:100%;height:100%;inset:0;overflow:visible}.rivulet-current{stroke-dasharray:7 10;animation:rivulet-drift 4s linear infinite}.rivulet-flow span{z-index:1;background:#eaf5ff;border:1px solid #c9e2fc;border-radius:30px;padding:6px 13px;color:#20598e;font-size:12px;font-weight:650}.rivulet-open{display:flex;justify-content:space-between;align-items:center;background:var(--wave);color:#092b51;padding:14px 18px;border-radius:13px;margin-top:19px;font-weight:750}.rivulet-console-note{text-align:center;font-size:11px;margin-top:11px}.rivulet-fact{display:flex;gap:20px;align-items:baseline;padding:19px 0 26px;border-bottom:1px solid var(--line);font-size:13px}.rivulet-fact strong{white-space:nowrap;color:var(--deep)}.rivulet-block{padding-top:49px}.rivulet-heading{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:23px}.rivulet-heading p{max-width:330px;font-size:14px}.rivulet-pairs{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.rivulet-pair{background:white;border:1px solid var(--line);border-radius:21px;padding:24px;display:flex;flex-direction:column;align-items:start;position:relative;overflow:hidden}.rivulet-pair:before{content:"";position:absolute;top:0;left:24px;right:24px;height:3px;background:var(--wave);border-radius:0 0 5px 5px}.rivulet-pair:nth-child(2):before{background:#35bcb1}.rivulet-pair:nth-child(3):before{background:#919fee}.rivulet-coins{display:flex;align-items:center;gap:11px;margin-bottom:22px}.rivulet-coins img{height:35px;width:35px}.rivulet-coins span{color:#6f93b4}.rivulet-pair p{font-size:14px;margin:12px 0 18px}.rivulet-pair a{margin-top:auto;font-size:14px;font-weight:700}.rivulet-instructions{background:#eaf5ff;border:1px solid #d6eaff;border-radius:25px;padding:30px;margin-top:43px}.rivulet-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:25px;list-style:none;padding:0;margin-bottom:0;counter-reset:route}.rivulet-steps li{counter-increment:route}.rivulet-steps li:before{content:"0" counter(route);display:block;color:var(--deep);font-size:13px;font-weight:750;margin-bottom:12px}.rivulet-steps h3{font-size:18px}.rivulet-steps p{font-size:14px;margin-top:10px}.rivulet-double{display:grid;grid-template-columns:1fr 1fr;gap:45px}.rivulet-fees>p{margin:17px 0}.rivulet-fees dl{margin:0}.rivulet-fees dl>div{display:grid;grid-template-columns:114px 1fr;gap:14px;border-top:1px solid var(--line);padding:14px 0;font-size:14px}.rivulet-fees dt{font-weight:700}.rivulet-fees dd{margin:0;color:var(--muted)}.rivulet-fixes{border:1px solid var(--line);background:white;border-radius:23px;padding:26px}.rivulet-fixes h2{font-size:28px}.rivulet-fixes h3{font-size:16px;margin:20px 0 7px}.rivulet-fixes p{font-size:14px}.rivulet-track{background:#edf7ff;border-radius:12px;padding:13px;margin-top:20px}.rivulet-learning{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:center}.rivulet-film{position:relative;border-radius:21px;overflow:hidden;aspect-ratio:16/9;background:#123556}.rivulet-film button{display:block;width:100%;height:100%;padding:0;border:0;cursor:pointer;color:white;background:#123556}.rivulet-film img{display:block;width:100%;height:100%;object-fit:cover;opacity:.76}.rivulet-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:65px;height:65px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--deep);font-size:25px;box-shadow:0 5px 30px #0003}.rivulet-film iframe{width:100%;height:100%;border:0;display:block}.rivulet-learning h2{font-size:30px}.rivulet-learning p{font-size:14px;margin:15px 0}.rivulet-learning small{color:var(--deep);font-weight:650}.rivulet-social{display:flex;align-items:center;justify-content:space-between;gap:25px;margin-top:28px;padding:24px 28px;border:1px solid #a9d5ff;border-radius:20px;background:linear-gradient(110deg,#e1f1ff,#f1fcff)}.rivulet-social p{font-size:14px;margin-top:8px}.rivulet-social a{flex-shrink:0;font-size:14px;font-weight:700;padding:11px 15px;border-radius:12px;background:white;border:1px solid #bfddfa;text-decoration:none}.rivulet-answers{display:grid;grid-template-columns:.7fr 1.3fr;gap:40px}.rivulet-answers details{border-bottom:1px solid var(--line);padding:17px 0}.rivulet-answers details:first-child{padding-top:0}.rivulet-answers summary{cursor:pointer;font-weight:650;line-height:1.5}.rivulet-answers details p{font-size:14px;margin-top:11px}.rivulet-close{display:flex;align-items:center;justify-content:space-between;gap:25px;padding:29px 32px;margin:45px 0 28px;background:var(--navy);border-radius:24px;color:white}.rivulet-close h2{font-size:28px}.rivulet-close p{color:#c3d8ec;font-size:14px;margin-top:8px}.rivulet-close .rivulet-go{background:#bce9ff;color:var(--navy);flex-shrink:0}.rivulet-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 0 28px;font-size:12px;color:var(--muted)}.rivulet-bottom a{margin-left:16px}@keyframes rivulet-drift{to{stroke-dashoffset:-102}}@media(min-width:1300px){.rivulet-hero{gap:75px}}@media(max-width:850px){.rivulet-hero{gap:28px}.rivulet-top nav{gap:17px}.rivulet-pair{padding:21px}.rivulet-heading{display:block}.rivulet-heading p{max-width:none;margin-top:13px}.rivulet-double{gap:25px}.rivulet-social{align-items:start}.rivulet-social a{flex-shrink:1}}@media(max-width:650px){.rivulet-wrap{width:calc(100% - 32px)}.rivulet-top{padding:17px 0;gap:12px}.rivulet-mark{font-size:18px;gap:7px}.rivulet-mark img{width:29px;height:29px}.rivulet-top nav>a:not(.rivulet-go){display:none}.rivulet-top .rivulet-go{font-size:12px;padding:10px 12px;gap:10px}.rivulet-hero{grid-template-columns:1fr;padding:35px 0 28px;gap:33px}h1{font-size:66px}.rivulet-intro{font-size:18px;max-width:none}.rivulet-console{padding:20px;margin:0 6px}.rivulet-fact{display:block;font-size:13px;padding-top:8px}.rivulet-fact p{margin-top:7px}.rivulet-block{padding-top:35px}.rivulet-pairs{grid-template-columns:1fr;gap:13px}.rivulet-pair{padding:22px}.rivulet-coins{margin-bottom:15px}.rivulet-pair p{margin:10px 0 13px}.rivulet-instructions{margin-top:31px;padding:24px}.rivulet-steps{grid-template-columns:1fr;gap:23px}.rivulet-steps li:before{margin-bottom:7px}.rivulet-double,.rivulet-learning,.rivulet-answers{grid-template-columns:1fr;gap:25px}.rivulet-fees dl>div{grid-template-columns:100px 1fr}.rivulet-social{display:block;padding:23px}.rivulet-social a{display:inline-block;margin-top:16px}.rivulet-close{display:block;padding:25px;margin-top:32px}.rivulet-close .rivulet-go{margin-top:19px}.rivulet-bottom{display:block}.rivulet-bottom div{margin-top:8px}.rivulet-bottom a{margin:0 16px 0 0}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.rivulet-console:hover,.rivulet-go:hover{transform:none}}
+:root{--bg:#FAF9FC;--surface:#FFFFFF;--text:#16131F;--muted:#5F5870;--accent:#6D28D9;--accent-ink:#FFFFFF;--radius:16px;--display:"Albert Sans";--body:"Albert Sans"}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:2rem}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:var(--accent-ink)}
+a{color:inherit;text-underline-offset:.25em}
+a:hover{color:var(--accent)}
+button,input,select,textarea{font:inherit}
+input,select{color:var(--text);accent-color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:5px}
+img,svg{max-width:100%;vertical-align:middle}
+svg{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.c554e31{width:min(1200px,calc(100% - 4rem));margin-inline:auto}
+.cf5e029{min-height:92px;display:flex;align-items:center;justify-content:space-between;gap:2rem;border-bottom:1px solid color-mix(in srgb,var(--text) 12%,transparent)}
+.cb05cbf{display:inline-flex;align-items:center;gap:.7rem;text-decoration:none;font:650 1.3rem/1.2 var(--display);letter-spacing:-.04em}
+.ca937a9{display:grid;place-items:center;width:36px;height:36px;background:var(--accent);color:var(--accent-ink);border-radius:calc(var(--radius)*.5)}
+.ca937a9 svg{width:23px;height:23px}
+.ceefb54{display:flex;align-items:center;gap:1.8rem;font-size:.875rem;font-weight:550}
+.ceefb54 a{text-decoration:none}
+.ceefb54 .ca09a14{padding:.6rem 1rem;border:1px solid color-mix(in srgb,var(--text) 18%,transparent);border-radius:var(--radius)}
+.c30c4bc{padding-block:1.5rem;font-size:.8rem;color:var(--muted);overflow-wrap:anywhere}
+.cbb51c5{display:flex;flex-wrap:wrap;align-items:center;gap:.55rem;margin:0;padding:0;list-style:none}
+.cbb51c5 a{text-decoration:none}
+.cbb51c5 [aria-current="page"]{color:var(--text)}
+.c718c53{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:center;gap:clamp(2rem,6vw,6rem);padding-block:2.5rem 5.5rem}
+.c708860{min-width:0}
+.c691cd8{display:inline-flex;align-items:center;gap:.55rem;margin:0 0 1.25rem;color:var(--muted);font-size:.875rem}
+.c691cd8::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 12%,transparent)}
+h1{margin:0;font:550 clamp(2.65rem,5vw,4.75rem)/1.06 var(--display);letter-spacing:-.055em;overflow-wrap:anywhere;text-wrap:balance}
+h1 em{color:var(--accent);font-style:normal}
+.c12acde{max-width:36rem;margin:1.6rem 0 2rem;color:var(--muted);font-size:1.1rem;line-height:1.8}
+.cdc3271{display:inline-flex;justify-content:center;align-items:center;gap:1.4rem;min-height:54px;padding:.9rem 1.4rem;background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 86%,var(--text)));color:var(--accent-ink);border:1px solid color-mix(in srgb,var(--accent-ink) 12%,transparent);border-radius:var(--radius);font-weight:650;text-decoration:none;box-shadow:0 8px 22px color-mix(in srgb,var(--accent) 20%,transparent);transition:transform .2s,box-shadow .2s}
+.cdc3271 svg{width:20px;height:20px;flex:none}
+.cdc3271:hover{color:var(--accent-ink);transform:translateY(-2px);box-shadow:0 12px 26px color-mix(in srgb,var(--accent) 28%,transparent)}
+.cd14105{display:flex;align-items:center;gap:.5rem;margin:1.2rem 0 0;color:var(--muted);font-size:.8rem}
+.cd14105 svg{width:16px;height:16px;color:var(--accent)}
+.c7c0368{position:relative;min-width:0;padding:12px;border:1px solid color-mix(in srgb,var(--accent) 18%,transparent);border-radius:calc(var(--radius) + 12px);background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 13%,var(--bg)),color-mix(in srgb,var(--surface) 70%,var(--bg)));box-shadow:0 28px 64px -28px color-mix(in srgb,var(--text) 24%,transparent)}
+.ccf1e98{padding:clamp(1.25rem,3vw,2rem);background:var(--surface);border:1px solid color-mix(in srgb,var(--text) 9%,transparent);border-radius:var(--radius)}
+.c1191fe{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.7rem}
+.c1191fe h2{margin:0;font:600 1.2rem/1.3 var(--display);letter-spacing:-.025em}
+.c634a49{display:inline-flex;align-items:center;gap:.4rem;color:var(--muted);font-size:.72rem;white-space:nowrap}
+.c634a49::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.c54ceca{display:grid;grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr);align-items:center;gap:.7rem;margin-bottom:1.7rem}
+.c2f2a2b{min-width:0;padding:.9rem 1rem;background:color-mix(in srgb,var(--bg) 70%,var(--surface));border:1px solid color-mix(in srgb,var(--text) 9%,transparent);border-radius:calc(var(--radius)*.7)}
+.c22ee89{display:block;margin-bottom:.65rem;color:var(--muted);font-size:.75rem}
+.c6324c9{display:flex;align-items:center;gap:.5rem;min-height:32px;font:600 .95rem/1.3 var(--display);overflow-wrap:anywhere}
+.c6324c9 img,.c6324c9 svg{width:auto;height:32px;max-width:100%;object-fit:contain}
+.c58fda8{display:grid;place-items:center;width:36px;height:36px;border:1px solid color-mix(in srgb,var(--accent) 24%,transparent);border-radius:50%;color:var(--accent)}
+.c58fda8 svg{width:18px;height:18px}
+.c0cd94d{display:block;margin-bottom:.55rem;font-size:.8rem;font-weight:550}
+.c2b8fbe{display:flex;align-items:center;gap:.5rem;padding:.7rem 1rem;border:1px solid color-mix(in srgb,var(--text) 19%,transparent);border-radius:calc(var(--radius)*.7);background:var(--bg);transition:border-color .2s}
+.c2b8fbe:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 13%,transparent)}
+.c2b8fbe input{width:100%;min-width:0;padding:0;border:0;border-radius:0;background:var(--bg);font:550 1.9rem/1.5 var(--display);font-variant-numeric:tabular-nums}
+.c2b8fbe input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.c2b8fbe span{color:var(--muted);font-size:.8rem}
+.c1d83d7{margin:.5rem 0 1.2rem;color:var(--muted);font-size:.73rem}
+.c8f41da{margin:-.65rem 0 1rem;color:var(--text);font-size:.8rem}
+.ca81afc{padding:1.2rem;border:1px solid color-mix(in srgb,var(--accent) 18%,transparent);border-radius:calc(var(--radius)*.7);background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 8%,var(--surface)),var(--surface))}
+.cee5040{display:block;color:var(--muted);font-size:.8rem}
+.c304052{display:block;margin:.35rem 0 1.2rem;font:600 clamp(1.65rem,3vw,2.25rem)/1.25 var(--display);letter-spacing:-.035em;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.c304052 small{color:var(--muted);font:400 .8rem/1.5 var(--body);letter-spacing:0}
+.cdb2199{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding-top:1rem;border-top:1px solid color-mix(in srgb,var(--text) 10%,transparent)}
+.c349f74{display:block;color:var(--muted);font-size:.72rem}
+.c55d0dd{display:block;margin-top:.2rem;font-size:.9rem;font-weight:600;font-variant-numeric:tabular-nums}
+.ccf1e98 .cdc3271{width:100%;margin-top:1.3rem;justify-content:space-between}
+.ca4006c{margin-top:1rem;color:var(--muted);font-size:.73rem}
+.ca4006c summary{cursor:pointer;width:fit-content;text-underline-offset:.2em}
+.ca4006c summary:hover{color:var(--text)}
+.ca4006c p{margin:.7rem 0 0}
+.c44b886{margin:0;font:550 1.75rem/1.2 var(--display);letter-spacing:-.035em}
+.c8f0f5a{padding:2rem 2.25rem;background:var(--surface);border:1px solid color-mix(in srgb,var(--text) 10%,transparent);border-radius:var(--radius)}
+.c8f0f5a .c44b886{margin-bottom:1.5rem}
+.cd64ca1{max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}
+.c1a89ab{width:100%;border-collapse:collapse;text-align:left;font-size:.9rem}
+.c1a89ab caption{text-align:left;margin-bottom:1rem;color:var(--muted)}
+.c1a89ab th,.c1a89ab td{padding:1rem 1.1rem;border-bottom:1px solid color-mix(in srgb,var(--text) 10%,transparent);vertical-align:top;overflow-wrap:anywhere}
+.c1a89ab th{color:var(--muted);font-weight:500}
+.c1a89ab thead{background:color-mix(in srgb,var(--accent) 7%,var(--surface))}
+.c1a89ab thead th{color:var(--text);font-weight:600}
+.c1a89ab tbody tr:last-child>*{border-bottom:0}
+.c1a89ab tbody tr:hover{background:color-mix(in srgb,var(--accent) 4%,var(--surface))}
+.ce2c1ea{max-width:820px;margin:4.5rem auto}
+.c5b9699{margin:0 0 3.5rem;scroll-margin-top:2rem}
+.c428392{margin:0 0 1.25rem;font:550 clamp(1.65rem,3vw,2.25rem)/1.2 var(--display);letter-spacing:-.035em;text-wrap:balance}
+.c44a9e0{color:var(--muted);font-size:1.025rem;line-height:1.9;overflow-wrap:anywhere}
+.c44a9e0 p{margin:0 0 1.25rem}
+.c44a9e0 h3{margin:1.75rem 0 .75rem;color:var(--text);font:600 1.25rem/1.35 var(--display);letter-spacing:-.02em}
+.c44a9e0 strong{color:var(--text);font-weight:600}
+.c44a9e0 a,.c188584 a,.c48c53f a{color:var(--accent);text-decoration-thickness:1px}
+.c44a9e0 ul,.c44a9e0 ol,.c188584 ul,.c188584 ol{padding-left:1.4rem}
+.c44a9e0 li+li{margin-top:.55rem}
+.c44a9e0 li::marker{color:var(--accent)}
+.c44a9e0 blockquote{margin:1.5rem 0;padding:1rem 1.5rem;border-left:3px solid var(--accent);background:var(--surface);border-radius:0 var(--radius) var(--radius) 0;color:var(--text)}
+.c44a9e0 img{height:auto;border-radius:var(--radius)}
+.c44a9e0 table{width:100%;border-collapse:collapse}
+.c44a9e0 td,.c44a9e0 th{padding:.75rem;border-bottom:1px solid color-mix(in srgb,var(--text) 12%,transparent);text-align:left}
+.c51aa2f{margin:.8rem 0;padding:0 1.4rem;border:1px solid color-mix(in srgb,var(--text) 12%,transparent);border-radius:var(--radius);background:var(--surface)}
+.ceb87f3{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;min-height:72px;padding:1.2rem 0;cursor:pointer;list-style:none;font:550 1.05rem/1.5 var(--display)}
+.ceb87f3::-webkit-details-marker{display:none}
+.ceb87f3::after{content:"+";flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:color-mix(in srgb,var(--accent) 10%,var(--surface));color:var(--accent);font:400 1.25rem/1 var(--body)}
+.c51aa2f[open]{border-color:color-mix(in srgb,var(--accent) 40%,transparent)}
+.c51aa2f[open]>.ceb87f3::after{content:"−"}
+.c188584{padding:0 2.8rem 1.3rem 0;color:var(--muted);line-height:1.85;overflow-wrap:anywhere}
+.c188584 p{margin:.25rem 0 .75rem}
+.cec5547{display:grid;grid-template-columns:1fr 2fr;gap:2rem;padding:2.5rem 0;border-top:1px solid color-mix(in srgb,var(--text) 12%,transparent)}
+.cccc7db{margin:0;padding:0;list-style:none}
+.c48c53f{padding:.7rem 0;border-bottom:1px solid color-mix(in srgb,var(--text) 8%,transparent);color:var(--muted);font-size:.875rem;overflow-wrap:anywhere}
+.c48c53f:first-child{padding-top:0}
+.c48c53f:last-child{border-bottom:0}
+.cd7608c{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding-block:1.75rem 2.5rem;border-top:1px solid color-mix(in srgb,var(--text) 12%,transparent);color:var(--muted);font-size:.8rem}
+.c0b55cf{color:var(--text);font:600 1rem/1.3 var(--display);letter-spacing:-.025em}
+.c419768{margin:0}
+@media(min-width:1100px){.c7c0368{transform:rotate(1deg)}.ccf1e98{transform:rotate(-1deg)}}
+@media(max-width:850px){.c718c53{grid-template-columns:1fr;gap:2.5rem;padding-block:1.5rem 3.5rem}.c708860{max-width:650px}.c7c0368{width:100%;max-width:580px;justify-self:center}.ce2c1ea{margin-block:3.5rem}.ceefb54{gap:1rem}h1{max-width:14ch}}
+@media(max-width:540px){.c554e31{width:calc(100% - 2rem)}.cf5e029{min-height:76px;gap:1rem}.ceefb54>a:not(.ca09a14){display:none}.ceefb54 .ca09a14{padding:.5rem .8rem}.c30c4bc{padding-block:1.1rem}.c718c53{padding-top:1rem}.c708860>.cdc3271{width:100%;justify-content:space-between}.c12acde{font-size:1rem}.c7c0368{padding:7px;border-radius:calc(var(--radius) + 7px)}.ccf1e98{padding:1.1rem}.c54ceca{gap:.4rem;grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr)}.c58fda8{width:30px;height:30px}.c2f2a2b{padding:.8rem}.c8f0f5a{padding:1.4rem 1rem}.c1a89ab th,.c1a89ab td{padding:.85rem .65rem}.c51aa2f{padding-inline:1rem}.c188584{padding-right:0}.cec5547{grid-template-columns:1fr;gap:1.4rem}.cd7608c{align-items:flex-start;flex-direction:column;gap:.65rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}.cdc3271:hover{transform:none}}
 </style>
 </head>
 <body>
-<a class="rivulet-skip" href="#sui-main">Skip to SUI swap guide</a>
-<div class="rivulet-wrap">
-<header class="rivulet-top">
-<a class="rivulet-mark" href="https://insert_url/" aria-label="Swap SUI home"><img src="sui.png" alt="" width="36" height="36">SUI / swap</a>
-<nav aria-label="SUI swap navigation"><a href="#sui-pairs">SUI pairs</a><a href="#sui-fees">Swap fees</a><a class="rivulet-go" href="/dashboard/">Swap SUI <span aria-hidden="true">↗</span></a></nav>
-</header>
-<main id="sui-main">
-<section class="rivulet-hero" aria-labelledby="sui-title">
-<div><div class="rivulet-kicker">Sui network · crypto swaps</div><h1 id="sui-title">Swap <span>SUI</span></h1><p class="rivulet-intro">Swap SUI to USDC, USDT or ETH. Choose your next asset, check the receiving network, and review your quote before sending.</p><a class="rivulet-go" href="/dashboard/">Start your SUI swap <span aria-hidden="true">↗</span></a><div class="rivulet-tags"><span>Low Sui network fees</span><span>Fast Sui confirmations</span></div></div>
-<div class="rivulet-console" id="sui-route" role="link" tabindex="0" aria-label="Open the dashboard to swap SUI and choose your receiving asset">
-<div class="rivulet-console-title"><strong>Your SUI swap route</strong><span>SUI → USDC</span></div>
-<div class="rivulet-terminal"><div><small>You send</small><strong>Sui</strong></div><div class="rivulet-token"><img src="sui.png" alt="" width="35" height="35">SUI</div></div>
-<div class="rivulet-flow"><svg viewBox="0 0 400 92" fill="none" aria-hidden="true" preserveAspectRatio="none"><path d="M45 0V22Q45 46 80 46H320Q355 46 355 70V92" stroke="#d0e6fc" stroke-width="3"/><path class="rivulet-current" d="M45 0V22Q45 46 80 46H320Q355 46 355 70V92" stroke="#4DA2FF" stroke-width="3"/></svg><span>Quote → confirm → receive</span></div>
-<div class="rivulet-terminal"><div><small>You get</small><strong>USD Coin</strong></div><div class="rivulet-token"><img src="usdc.png" alt="" width="35" height="35">USDC</div></div>
-<div class="rivulet-open">Build your swap <span aria-hidden="true">↗</span></div><p class="rivulet-console-note">Choose amount and destination network in the dashboard</p>
+<div class="c554e31">
+<nav class="cf5e029" aria-label="Main navigation">
+<a class="cb05cbf" href="#hero"><span class="ca937a9" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8h15m-4-4 4 4-4 4M20 16H5m4-4-4 4 4 4"/></svg></span>Compare</a>
+<div class="ceefb54"><a href="#facts">Key facts</a><a href="#guide">Guide</a><a href="#sources">Sources</a><a class="ca09a14" href="dashboard/">Open app ↗</a></div>
+</nav>
+<div class="c30c4bc"><nav class="cbb51c5" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Swaps</span> <span>/</span> <span>Sui Swap</span></nav></div>
+<section class="c718c53" id="hero" aria-labelledby="hero-title">
+<div class="c708860">
+<p class="c691cd8">Wrap & unwrap</p>
+<h1 id="hero-title">Sui <em>Swap</em>.</h1>
+<p class="c12acde">A Sui Swap trades one token for another directly on the Sui network, routed through an on-chain DEX such as Cetus or Turbos rather than through any party that holds your funds. Sui's object-centric Move model lets independent transactions execute in parallel instead of queuing one after another, so a swap confirms with sub-second finality even while the network is busy. You review the quote, the price impact and the slippage tolerance before you sign, pay a small fee in SUI, and the output token lands directly in your own wallet.</p>
+<a class="cdc3271" href="dashboard/">Open app <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+<p class="cd14105"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Explore fees and timing below</p>
 </div>
+<aside class="c7c0368" aria-labelledby="estimator-title">
+<div class="ccf1e98">
+<div class="c1191fe"><h2 id="estimator-title">Wrap estimator</h2><span class="c634a49">Auto-updating</span></div>
+<div class="c54ceca">
+<div class="c2f2a2b"><span class="c22ee89">From</span><div class="c6324c9"><img src="assets/tokens/sui.svg" alt="Sui" width="28" height="28"></div></div>
+<span class="c58fda8" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span>
+<div class="c2f2a2b"><span class="c22ee89">To</span><div class="c6324c9"><img src="assets/tokens/usdc.svg" alt="USD Coin" width="28" height="28"></div></div>
+</div>
+<label class="c0cd94d" for="amount">Amount</label>
+<div class="c2b8fbe"><input id="amount" type="number" inputmode="decimal" min="1" max="1000000000" step="0.01" value="1000" aria-describedby="amount-hint amount-error"><span>units</span></div>
+<p class="c1d83d7" id="amount-hint">Enter 1–1,000,000,000 units, up to 2 decimal places.</p>
+<p class="c8f41da" id="amount-error" hidden></p>
+<div class="ca81afc" role="status" aria-live="polite" aria-atomic="true">
+<span class="cee5040">Estimated amount received</span>
+<output class="c304052" id="received" for="amount">—</output>
+<div class="cdb2199">
+<div><span class="c349f74">Estimated fee</span><output class="c55d0dd" id="fee" for="amount">—</output></div>
+<div><span class="c349f74">Estimated time</span><output class="c55d0dd" id="time" for="amount">—</output></div>
+</div>
+</div>
+<a class="cdc3271" href="dashboard/">Continue <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+<details class="ca4006c"><summary>How the estimate is calculated</summary><p>Fee = 0.5 units + 0.35% of the amount, rounded to 2 decimals. Amount received = amount − fee. Time = 2 minutes + 1 minute per 10,000 units, rounded up.</p></details>
+<noscript><p class="c1d83d7">Enable JavaScript to calculate fees and timing.</p></noscript>
+</div>
+</aside>
 </section>
-<aside class="rivulet-fact"><strong>Why Sui feels fast</strong><p>Built by Mysten Labs, Sui is a Layer 1 with an object-based data model powered by Move. Its architecture supports parallel transaction processing. <a href="https://www.sui.io/">Explore Sui’s official network overview</a>.</p></aside>
-<section class="rivulet-block" id="sui-pairs" aria-labelledby="sui-pairs-title"><div class="rivulet-heading"><h2 id="sui-pairs-title">What can you swap SUI for?</h2><p>Start with the asset. Match its receiving network to your wallet before you send.</p></div>
-<div class="rivulet-pairs">
-<article class="rivulet-pair"><div class="rivulet-coins"><img src="sui.png" alt="SUI" width="35" height="35"><span aria-hidden="true">→</span><img src="usdc.png" alt="USDC" width="35" height="35"></div><h3>SUI to USDC</h3><p>Move into a dollar-pegged stablecoin. Check the destination network and token version; native and bridged USDC are different assets.</p><a href="/dashboard/">Swap SUI to USDC ↗</a></article>
-<article class="rivulet-pair"><div class="rivulet-coins"><img src="sui.png" alt="SUI" width="35" height="35"><span aria-hidden="true">→</span><img src="usdt.png" alt="USDT" width="35" height="35"></div><h3>SUI to USDT</h3><p>Swap SUI to Tether. Select the exact USDT network accepted by your receiving wallet or deposit account.</p><a href="/dashboard/">Swap SUI to USDT ↗</a></article>
-<article class="rivulet-pair"><div class="rivulet-coins"><img src="sui.png" alt="SUI" width="35" height="35"><span aria-hidden="true">→</span><img src="eth.png" alt="ETH" width="35" height="35"></div><h3>SUI to ETH</h3><p>Choose ETH on Ethereum for native ether. A wrapped ETH token on Sui is a different destination from Ethereum mainnet.</p><a href="/dashboard/">Swap SUI to ETH ↗</a></article>
-</div></section>
-<section class="rivulet-instructions" aria-labelledby="sui-how"><h2 id="sui-how">How do I swap SUI for another cryptocurrency?</h2><ol class="rivulet-steps"><li><h3>Set your pair and amount</h3><p>Open the dashboard, choose SUI as the sending asset and select your receiving coin. Review the available route, rate and minimum amount.</p></li><li><h3>Match the receiving network</h3><p>Copy the address from your destination wallet on the selected network. Check the asset, address and expected amount before proceeding.</p></li><li><h3>Send SUI and track delivery</h3><p>Follow the order’s deposit instructions and leave SUI for gas. The service releases the asset after your SUI transaction confirms and the order is processed.</p></li></ol></section>
-<div class="rivulet-block rivulet-double">
-<section class="rivulet-fees" id="sui-fees" aria-labelledby="sui-fees-title"><h2 id="sui-fees-title">How to compare SUI swap quotes after fees</h2><p>Sui’s low gas costs help keep the sending step inexpensive. Compare the final amount you receive to understand the full swap cost.</p><dl><div><dt>Sui gas</dt><dd>The network charge for sending SUI. Keep enough SUI outside your swap amount to cover it.</dd></div><div><dt>Swap cost</dt><dd>Service fees and the quoted exchange rate determine the swap cost. Check whether fees are included in your quote.</dd></div><div><dt>Delivery cost</dt><dd>A receiving-chain transaction adds its own network cost. Ethereum delivery can cost more than a transfer on Sui.</dd></div></dl><a href="https://www.sui.io/blog/gas-fees-explained">Read Sui’s official gas-fee explanation ↗</a></section>
-<section class="rivulet-fixes" aria-labelledby="sui-fixes-title"><h2 id="sui-fixes-title">Why did my SUI swap fail?</h2><h3>Insufficient SUI for gas</h3><p>Lower the amount you send so the wallet can also pay the transaction fee. Your full balance is not your spendable swap amount.</p><h3>Quote expired or amount changed</h3><p>Refresh the quote and check the new output. Follow the current order instructions before sending a deposit.</p><h3>SUI sent, asset not received</h3><p>Check the SUI transaction status first, then the order and payout status. For a confirmed deposit with no payout, contact the service with your order ID and transaction digest.</p><p class="rivulet-track">Check your transaction: <a href="https://suiscan.xyz/mainnet/home">look up your SUI transaction on Suiscan ↗</a></p></section>
+<section class="c8f0f5a" id="facts" aria-labelledby="facts-title"><h2 class="c44b886" id="facts-title">Key facts</h2><div class="cd64ca1" role="region" aria-label="Key facts table" tabindex="0"><table class="c1a89ab"><tbody><tr><th scope="row">Network</th><td>Sui — object-centric Move blockchain</td></tr>
+<tr><th scope="row">Gas token</th><td>SUI</td></tr>
+<tr><th scope="row">Leading DEXes</th><td>Cetus, Turbos Finance</td></tr>
+<tr><th scope="row">Execution model</th><td>Parallel transaction execution</td></tr>
+<tr><th scope="row">Settlement</th><td>Sub-second finality</td></tr>
+<tr><th scope="row">Custody</th><td>Self-custody — you hold your keys</td></tr></tbody></table></div></section>
+<main class="ce2c1ea" id="guide"><section class="c5b9699"><h2 class="c428392">What Is a Sui Swap?</h2><div class="c44a9e0"><strong>A Sui Swap is an on-chain trade of one token for another, executed by a decentralized exchange running on the Sui network instead of by a custodial order book.</strong> You connect a self-custody wallet, pick the pair you want, and the DEX's smart contract pulls the amount you are selling from a liquidity pool while sending the matching amount of the output token straight to your address. Nothing passes through a third party that could freeze or delay it. Because Sui processes unrelated transactions in parallel rather than forcing every trade through a single global queue, a swap that would compete for block space on a slower chain settles here in a fraction of a second, with the quoted price holding unless the pool moves before your transaction lands.</div></section>
+<section class="c5b9699"><h2 class="c428392">How a Sui Swap Executes on Cetus and Turbos</h2><div class="c44a9e0">Most swap volume on the network runs through a small set of automated market makers, chiefly Cetus and Turbos Finance, each holding pooled liquidity for the pairs they list. You never trade against another person directly; you trade against the pool, and the pool's pricing curve sets the rate you get.<h3>Why Sui's object model matters here</h3>Sui treats assets as individually owned objects rather than entries in one shared account table, which is part of why the network can validate many swaps touching different pools at the same time instead of processing them one by one. The practical effect for a trader is a network that stays fast under load, confirming a route in well under a second even when many other swaps are happening at once.<h3>Concentrated liquidity and routing</h3>Cetus and similar Sui DEXes use concentrated liquidity, meaning providers can park their capital near the current price so a given pool size covers more volume with less slippage. When one pool does not have enough depth for your size, the router can split the trade across pools or hop through an intermediate asset, and the quote you are shown already reflects that path.</div></section>
+<section class="c5b9699"><h2 class="c428392">Sui Swap Fees, Gas, and Timing</h2><div class="c44a9e0">A trade here carries two separate costs: the network's own gas fee, paid in SUI, and the DEX's swap fee, usually a small percentage set by the pool you trade through. Both are tiny compared with execution on a congested network, which is part of why routing a transfer through a chain like this is attractive for frequent trading. Below is what you can expect on a typical trade.<table><thead><tr><th>Cost</th><th>Paid in</th><th>Typical size</th></tr></thead><tbody><tr><td>Network gas</td><td>SUI</td><td>Fractions of a cent</td></tr><tr><td>Pool swap fee</td><td>Deducted from trade</td><td>~0.05%–0.3% of size</td></tr><tr><td>Settlement time</td><td>—</td><td>Sub-second</td></tr></tbody></table><h3>Why gas stays low on Sui</h3>Sui's parallel execution means the network is not competing every transaction for the same serial slot, so fee pressure during busy periods stays modest compared with chains that process everything sequentially. You still pay gas in SUI for every swap, but it rarely becomes the deciding cost in a trade.<h3>Judging a quote by the net output</h3>Compare routes by the token amount you actually receive after fees and slippage, not the headline exchange rate. A pool with a lower listed fee can still net you less if its depth is thin and the price moves against you mid-trade, so check the minimum received figure the interface shows before you sign.</div></section>
+<section class="c5b9699"><h2 class="c428392">Running a Sui Swap Step by Step</h2><div class="c44a9e0">The flow is the same on Cetus, Turbos or any other Sui DEX, which is what makes the process predictable once you have done it a few times.<ul><li>Connect your self-custody wallet to the DEX and select the token you are selling and the token you want.</li><li>Enter the amount; the interface shows the quoted rate, the price impact and the minimum you will receive.</li><li>Set your slippage tolerance so the trade reverts rather than filling at a worse price.</li><li>Review the route, confirm the gas estimate in SUI, and sign the transaction in your wallet.</li><li>Watch for sub-second confirmation, then check the output token balance in your wallet.</li></ul></div></section>
+<section class="c5b9699"><h2 class="c428392">Is a Sui Swap Safe to Run?</h2><div class="c44a9e0">A trade through an established DEX never takes custody of your funds; the contract only moves what you approve for the single transaction you sign. The risks that remain are the ones you control at the moment of signing, not a counterparty holding your assets.<h3>Slippage and price impact</h3>A trade against a shallow pool can move the price against you before it fills, which is why the interface shows price impact separately from the fee. Setting a sensible slippage tolerance protects you from an unexpected fill; setting it too wide defeats that protection, and setting it too tight can cause the transaction to fail harmlessly when the market moves.<h3>The one rule that never changes</h3>No DEX, wallet or support channel ever needs your seed phrase to approve a trade. Anyone asking for it is attempting fraud. A genuine swap only ever asks you to sign a transaction you can read in your own wallet, listing the exact tokens and amounts involved.</div></section>
+<section class="c5b9699"><h2 class="c428392">Stablecoin Liquidity on Sui</h2><div class="c44a9e0">Sui carries deep stablecoin pools, with USDC pairs among the most liquid routes on the network, which keeps a trade into or out of a dollar-denominated asset cheap and low-slippage even at meaningful size. That depth comes from both native issuance and bridged supply, tracked across pools the way any serious liquidity market is, and traders moving volume through Cetus or Turbos routinely check <a href="https://defillama.com/" rel="nofollow noopener" target="_blank">aggregated DeFi data</a> before sizing a trade against it. Stablecoin-to-stablecoin routes tend to carry the lowest price impact of any pair on the network, since both sides hold close to the same market price. A trader researching the chain's design more broadly can start with the network's entry on <a href="https://en.wikipedia.org/wiki/Sui_(blockchain)" rel="nofollow noopener" target="_blank">Wikipedia</a> before going deeper into the technical docs.</div></section>
+<section class="c5b9699"><h2 class="c428392">Swapping on Sui vs Other Chains</h2><div class="c44a9e0">What sets trading on Sui apart from the same trade on an account-based chain is less the user interface and more what happens underneath it. Parallel execution from the object model means the network is not a single queue that every trade competes for, so fees and confirmation times stay stable instead of spiking under load. You can verify any settled trade directly on the <a href="https://suiscan.xyz/" rel="nofollow noopener" target="_blank">Sui network explorer</a>, and the underlying mechanics are documented in full in the <a href="https://docs.sui.io/" rel="nofollow noopener" target="_blank">Sui docs</a>. For a DEX-specific view of pool mechanics and fee tiers, the <a href="https://docs.cetus.zone/" rel="nofollow noopener" target="_blank">Cetus documentation</a> covers how concentrated liquidity on this network is structured, and the same explorer lets you confirm the output of your own transaction after it lands.</div></section><details class="c51aa2f"><summary class="ceb87f3">What is a swap on the Sui network?</summary><div class="c188584">It is an on-chain trade between two tokens, executed by a decentralized exchange such as Cetus or Turbos on Sui rather than by a custodial party. You keep your keys the entire time.</div></details>
+<details class="c51aa2f"><summary class="ceb87f3">Which DEXes handle trading on Sui?</summary><div class="c188584">Cetus and Turbos Finance carry most of the liquidity on Sui today, each running automated market maker pools you trade against directly through your wallet.</div></details>
+<details class="c51aa2f"><summary class="ceb87f3">Why does a trade settle so fast on Sui?</summary><div class="c188584">Sui's object-centric Move model lets independent transactions execute in parallel instead of queuing through one global sequence, so trades settle with sub-second finality even when the network is busy.</div></details>
+<details class="c51aa2f"><summary class="ceb87f3">What does trading on Sui cost?</summary><div class="c188584">You pay a small network gas fee in SUI plus the pool's own swap fee, typically a fraction of a percent of the trade size. Both are usually negligible compared with the trade itself.</div></details>
+<details class="c51aa2f"><summary class="ceb87f3">How do I avoid bad slippage when trading on Sui?</summary><div class="c188584">Set a slippage tolerance that matches the pool's depth, check the price impact shown before you sign, and size large trades against pools with enough liquidity, splitting across pools when needed.</div></details>
+<details class="c51aa2f"><summary class="ceb87f3">Do I need an account to trade on Sui?</summary><div class="c188584">No. You connect a self-custody wallet and trade on-chain, with no sign-up and no custodian holding your funds at any point.</div></details>
+<details class="c51aa2f"><summary class="ceb87f3">Can I trade stablecoins on Sui?</summary><div class="c188584">Yes. USDC and other stablecoin pairs are among the deepest pools on Sui, which keeps price impact low even for sizable trades between dollar-denominated assets.</div></details></main>
+<section class="cec5547" id="sources" aria-labelledby="sources-title"><h2 class="c44b886" id="sources-title">Sources</h2><div><ul class="cccc7db"><li><a class="c48c53f" href="https://docs.sui.io/" rel="nofollow noopener" target="_blank">Sui documentation</a></li>
+<li><a class="c48c53f" href="https://suiscan.xyz/" rel="nofollow noopener" target="_blank">Sui network explorer</a></li>
+<li><a class="c48c53f" href="https://docs.cetus.zone/" rel="nofollow noopener" target="_blank">Cetus documentation</a></li>
+<li><a class="c48c53f" href="https://defillama.com/" rel="nofollow noopener" target="_blank">DefiLlama</a></li></ul></div></section>
+<footer class="cd7608c"><span class="c0b55cf">Compare with clarity.</span><p class="c419768">Updated Oct 10, 2026</p></footer>
 </div>
-<section class="rivulet-block" aria-labelledby="sui-watch-title"><div class="rivulet-learning"><div class="rivulet-film" id="sui-film"><button type="button" aria-label="Play: how to swap to SUI in Phantom Wallet"><img src="https://i.ytimg.com/vi/upsIlCPYjbM/hqdefault.jpg" alt="How to swap Solana to Sui in Phantom Wallet video" width="480" height="360" loading="lazy"><span class="rivulet-play" aria-hidden="true">▶</span></button></div><div><div class="rivulet-kicker">Wallet swap walkthrough</div><h2 id="sui-watch-title">How to swap SUI: watch the full flow</h2><p>A full walkthrough of swapping into SUI in Phantom Wallet, including token selection and the confirmation flow.</p><small>Stouy Crypto · Swap Solana to Sui in Phantom Wallet</small></div></div><aside class="rivulet-social"><div><h3>Sui community discussions</h3><p>Read wallet experiences, SUI swap questions and network discussions from other Sui users.</p></div><a href="https://www.reddit.com/r/sui/">Explore Sui discussions on r/sui ↗</a></aside></section>
-<section class="rivulet-block rivulet-answers" aria-labelledby="sui-faq-title"><h2 id="sui-faq-title">SUI swap essentials: rates, speed and receiving funds</h2><div>
-<details open><summary>Where can I swap SUI to USDC, USDT or ETH?</summary><p>Open the swap dashboard, select SUI and your receiving asset, then check the available destination networks and quote. Match the receiving network to your wallet before creating the order.</p></details>
-<details><summary>How long does it take to swap SUI?</summary><p>Sui confirms transactions quickly, but a complete swap also depends on the service’s processing and the receiving network. Track the deposit and payout separately using the order status and transaction details.</p></details>
-<details><summary>How much does it cost to swap SUI?</summary><p>The total includes Sui gas, the service’s swap cost and any delivery-network charge. Review the quote’s fee breakdown and final receiving amount before sending SUI.</p></details>
-<details><summary>Can I swap SUI without keeping any SUI for gas?</summary><p>For a normal wallet transfer, keep enough SUI to pay gas in addition to the amount you send. Reduce the swap amount if your wallet reports an insufficient balance.</p></details>
-<details><summary>Why does the quote change when I swap SUI?</summary><p>Exchange rates and liquidity change between quotes. A floating-rate order can settle at a different rate; a fixed quote applies under its stated time and deposit conditions. Review the order’s rate terms before sending.</p></details>
-</div></section>
-<section class="rivulet-close" aria-labelledby="sui-ready"><div><h2 id="sui-ready">Swap SUI — choose what you receive</h2><p>Choose your asset. Check the network. Review your quote.</p></div><a class="rivulet-go" href="/dashboard/">Open SUI swap <span aria-hidden="true">↗</span></a></section>
-</main>
-<footer class="rivulet-bottom"><span>SUI swaps · USDC / USDT / ETH</span><div><a href="#sui-fees">Swap SUI fees</a><a href="#sui-faq-title">Swap SUI FAQ</a></div></footer>
-</div>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://insert_url/#webpage","url":"https://insert_url/","name":"swap SUI to USDC, USDT or ETH | Sui Swap","description":"Swap SUI to USDC, USDT or ETH. Review swap routes, receiving networks and fees.","inLanguage":"en","mentions":{"@type":"WebPage","@id":"https://www.reddit.com/r/sui/","url":"https://www.reddit.com/r/sui/","name":"Sui community discussions on Reddit"},"video":{"@id":"https://insert_url/#sui-video"}},{"@type":"VideoObject","@id":"https://insert_url/#sui-video","name":"How to Swap Solana to Sui in Phantom Wallet | Full Guide","description":"A full walkthrough of swapping into SUI in Phantom Wallet, including token selection and confirmation.","thumbnailUrl":"https://i.ytimg.com/vi/upsIlCPYjbM/hqdefault.jpg","uploadDate":"2025-03-13","duration":"PT3M12S","embedUrl":"https://www.youtube-nocookie.com/embed/upsIlCPYjbM","author":{"@type":"Person","name":"Stouy Crypto"}},{"@type":"FAQPage","@id":"https://insert_url/#faq","mainEntity":[{"@type":"Question","name":"Where can I swap SUI to USDC, USDT or ETH?","acceptedAnswer":{"@type":"Answer","text":"Open the swap dashboard, select SUI and your receiving asset, then check the available destination networks and quote. Match the receiving network to your wallet before creating the order."}},{"@type":"Question","name":"How long does it take to swap SUI?","acceptedAnswer":{"@type":"Answer","text":"Sui confirms transactions quickly, but a complete swap also depends on the service’s processing and the receiving network. Track the deposit and payout separately using the order status and transaction details."}},{"@type":"Question","name":"How much does it cost to swap SUI?","acceptedAnswer":{"@type":"Answer","text":"The total includes Sui gas, the service’s swap cost and any delivery-network charge. Review the quote’s fee breakdown and final receiving amount before sending SUI."}},{"@type":"Question","name":"Can I swap SUI without keeping any SUI for gas?","acceptedAnswer":{"@type":"Answer","text":"For a normal wallet transfer, keep enough SUI to pay gas in addition to the amount you send. Reduce the swap amount if your wallet reports an insufficient balance."}},{"@type":"Question","name":"Why does the quote change when I swap SUI?","acceptedAnswer":{"@type":"Answer","text":"Exchange rates and liquidity change between quotes. A floating-rate order can settle at a different rate; a fixed quote applies under its stated time and deposit conditions. Review the order’s rate terms before sending."}}]}]}
-</script>
 <script>
-const suiRoute = document.getElementById('sui-route');
-suiRoute.addEventListener('click', () => { window.location.assign('/dashboard/'); });
-suiRoute.addEventListener('keydown', event => {
-  if (event.key === 'Enter' || event.key === ' ') {
-    event.preventDefault();
-    window.location.assign('/dashboard/');
+(() => {
+  const amount = document.getElementById('amount');
+  const received = document.getElementById('received');
+  const fee = document.getElementById('fee');
+  const time = document.getElementById('time');
+  const error = document.getElementById('amount-error');
+  const number = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  let timer;
+  function update() {
+    const value = amount.valueAsNumber;
+    const valid = amount.value.trim() !== '' && Number.isFinite(value) && amount.validity.valid;
+    amount.setAttribute('aria-invalid', String(!valid));
+    error.hidden = valid;
+    error.textContent = valid ? '' : 'Enter an amount from 1 to 1,000,000,000 with up to 2 decimal places.';
+    if (!valid) {
+      received.textContent = '—';
+      fee.textContent = '—';
+      time.textContent = '—';
+      return;
+    }
+    const amountCents = Math.round(value * 100);
+    const feeCents = 50 + Math.round(amountCents * 35 / 10000);
+    received.textContent = number.format((amountCents - feeCents) / 100) + ' units';
+    fee.textContent = number.format(feeCents / 100) + ' units';
+    time.textContent = (2 + Math.ceil(value / 10000)).toLocaleString('en-US') + ' min';
   }
-});
-document.querySelector('#sui-film button').addEventListener('click', () => {
-  const frame = document.createElement('iframe');
-  frame.src = 'https://www.youtube-nocookie.com/embed/upsIlCPYjbM?autoplay=1&rel=0';
-  frame.title = 'Stouy Crypto: How to Swap Solana to Sui in Phantom Wallet';
-  frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
-  frame.allowFullscreen = true;
-  frame.referrerPolicy = 'strict-origin-when-cross-origin';
-  document.getElementById('sui-film').replaceChildren(frame);
-  frame.focus();
-});
+  amount.addEventListener('input', () => {
+    clearTimeout(timer);
+    timer = setTimeout(update, 180);
+  });
+  amount.addEventListener('change', () => {
+    clearTimeout(timer);
+    update();
+  });
+  update();
+})();
 </script>
 </body>
 </html>
