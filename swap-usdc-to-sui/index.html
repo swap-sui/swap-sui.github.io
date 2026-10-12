@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Swap USDC to SUI — Fast, Cheap On-Chain Routes</title>
+  <meta name="description" content="Swap USDC to SUI in seconds. Compare on-chain DEX, bridge, and CEX routes, learn which USDC variant you hold, and keep the SUI you receive after fees.">
+  <link rel="canonical" href="https://swap-sui.github.io/swap-usdc-to-sui/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Swap USDC to SUI the Fast Way">
+  <meta property="og:description" content="Swap USDC to SUI in seconds. Compare on-chain DEX, bridge, and CEX routes, learn which USDC variant you hold, and keep the SUI you receive after fees.">
+  <meta property="og:url" content="https://swap-sui.github.io/swap-usdc-to-sui/">
+  <meta property="og:image" content="https://swap-sui.github.io/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Swap USDC to SUI the Fast Way">
+  <meta name="twitter:description" content="Swap USDC to SUI in seconds. Compare on-chain DEX, bridge, and CEX routes, learn which USDC variant you hold, and keep the SUI you receive after fees.">
+  <meta name="twitter:image" content="https://swap-sui.github.io/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Albert+Sans:wght@500;600;700&display=swap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://swap-sui.github.io/#website", "url": "https://swap-sui.github.io/swap-usdc-to-sui/", "name": "Swap USDC to SUI — Fast, Cheap On-Chain Routes"}, {"@type": "WebPage", "@id": "https://swap-sui.github.io/#webpage", "url": "https://swap-sui.github.io/swap-usdc-to-sui/", "name": "Swap USDC to SUI — Fast, Cheap On-Chain Routes", "isPartOf": {"@id": "https://swap-sui.github.io/#website"}, "description": "Swap USDC to SUI in seconds. Compare on-chain DEX, bridge, and CEX routes, learn which USDC variant you hold, and keep the SUI you receive after fees.", "datePublished": "2026-10-12", "dateModified": "2026-10-12"}, {"@type": "SoftwareApplication", "name": "Swap USDC to SUI", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://swap-sui.github.io/swap-usdc-to-sui/"}, {"@type": "ListItem", "position": 2, "name": "Swaps"}, {"@type": "ListItem", "position": 3, "name": "Swap USDC to SUI"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the fastest way to swap USDC to SUI?", "acceptedAnswer": {"@type": "Answer", "text": "If your USDC is already native to Sui, a direct DEX swap is fastest, settling in under a second. USDC on Ethereum or Solana must bridge to Sui first, which adds a few minutes."}}, {"@type": "Question", "name": "Does it matter which USDC I hold?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Native Sui USDC trades for SUI immediately on a Sui DEX. ERC-20 USDC on Ethereum and SPL USDC on Solana must cross to Sui through Wormhole or Circle's CCTP before you can swap them."}}, {"@type": "Question", "name": "How do I move USDC from Ethereum or Solana to Sui?", "acceptedAnswer": {"@type": "Answer", "text": "Use a bridge such as Wormhole's portal or Circle's Cross-Chain Transfer Protocol. CCTP burns USDC on the source chain and mints canonical USDC on Sui, after which you swap it for SUI on a Sui DEX."}}, {"@type": "Question", "name": "How much does swapping USDC to SUI cost?", "acceptedAnswer": {"@type": "Answer", "text": "A same-chain Sui swap costs the pool's fee, usually a fraction of a percent, plus network gas in SUI measured in fractions of a cent. A cross-chain route adds one small bridge fee on top."}}, {"@type": "Question", "name": "Do I need an account to swap USDC to SUI?", "acceptedAnswer": {"@type": "Answer", "text": "No. On a DEX you connect a self-custody wallet and trade on-chain with no sign-up and no custodian. Only the centralized-exchange route requires an account that holds your funds until withdrawal."}}, {"@type": "Question", "name": "Why do I need SUI gas if I'm swapping from USDC?", "acceptedAnswer": {"@type": "Answer", "text": "Every Sui transaction, including the swap itself, is paid for in SUI. If you bridge USDC in, the arriving tokens include no gas, so keep a tiny SUI balance on hand to sign the swap."}}, {"@type": "Question", "name": "How do I know how much SUI I'll receive?", "acceptedAnswer": {"@type": "Answer", "text": "The DEX shows a minimum-received figure before you sign, reflecting the rate, pool fee and price impact. Compare routes by that net SUI amount rather than the headline exchange rate."}}]}]}</script>
+  <style>
+    :root{--bg:#FAF9FC;--surface:#FFFFFF;--text:#16131F;--muted:#5F5870;--accent:#6D28D9;--accent-ink:#FFFFFF;--radius:16px;--display:"Albert Sans";--body:"Albert Sans"}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 400 1rem/1.7 var(--body); -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-underline-offset: .22em; }
+    a:hover { text-decoration-thickness: .12em; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+    ::selection { background: var(--accent); color: var(--accent-ink); }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--display); line-height: 1.15; text-wrap: balance; }
+    p, h1, h2, h3 { margin-top: 0; }
+    img, svg { max-width: 100%; vertical-align: middle; }
+    .c5087f8 { width: min(1180px, calc(100% - 3rem)); margin-inline: auto; }
+    .c88c2e4 { position: absolute; z-index: 5; top: .5rem; left: 1rem; padding: .7rem 1rem; background: var(--surface); transform: translateY(-180%); border-radius: var(--radius); }
+    .c88c2e4:focus { transform: translateY(0); }
+    .cfe3ac9 { border-bottom: 1px solid color-mix(in srgb,var(--text) 10%,transparent); }
+    .cd45300 { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .c1e7461 { display: inline-flex; align-items: center; gap: .7rem; color: var(--text); font: 650 1.12rem/1.2 var(--display); text-decoration: none; }
+    .c74d22c { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: calc(var(--radius) * .6); background: var(--accent); color: var(--accent-ink); }
+    .c70a7e5 { width: 1.2rem; height: 1.2rem; fill: none; stroke: var(--accent-ink); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: 0 0 auto; }
+    .cca1f3e { display: flex; align-items: center; gap: 1.8rem; }
+    .cca1f3e > a { font-size: .88rem; font-weight: 600; text-decoration: none; }
+    .cca1f3e > a:not(.c01dda8) { color: var(--muted); }
+    .c01dda8 { display: inline-flex; align-items: center; justify-content: center; gap: .8rem; min-height: 52px; padding: .85rem 1.4rem; border: 1px solid color-mix(in srgb,var(--accent-ink) 12%,transparent); border-radius: var(--radius); background: linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 88%,var(--text))); color: var(--accent-ink); font: 650 .95rem/1.3 var(--body); text-decoration: none; box-shadow: 0 6px 18px color-mix(in srgb,var(--accent) 17%,transparent); transition: transform .18s ease, box-shadow .18s ease; }
+    .c01dda8:hover { transform: translateY(-2px); box-shadow: 0 9px 24px color-mix(in srgb,var(--accent) 25%,transparent); }
+    .cd45300 .c01dda8 { min-height: 42px; padding: .65rem 1rem; }
+    .c24a6ef { padding-block: 1rem 0; color: var(--muted); font-size: .8rem; overflow-wrap: anywhere; }
+    .c9d6266 { color: var(--muted); }
+    .c9d6266 a, a.c9d6266 { color: var(--muted); text-decoration: none; }
+    .c9d6266 a:hover, a.c9d6266:hover { color: var(--accent); text-decoration: underline; }
+    .c9d6266 ol, .c9d6266 ul { display: flex; flex-wrap: wrap; gap: .5rem 1rem; padding: 0; margin: 0; list-style: none; }
+    .c72dffb { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,1fr); gap: clamp(2rem,5vw,4.5rem); align-items: start; padding-block: 1.5rem 3rem; }
+    .c46c020 { display: inline-flex; align-items: center; gap: .55rem; margin-bottom: 1.3rem; color: var(--accent); font-size: .86rem; font-weight: 600; }
+    .c46c020::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb,var(--accent) 9%,transparent); }
+    h1 { margin-bottom: 1.4rem; font-size: clamp(2.5rem,4.7vw,4.35rem); font-weight: 600; letter-spacing: -.055em; overflow-wrap: anywhere; }
+    h1 em { color: var(--accent); font-style: normal; }
+    .c57016c { max-width: 48ch; margin-bottom: 2rem; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
+    .cb360ea { position: relative; min-width: 0; padding: clamp(1.1rem,2.4vw,1.5rem); border: 1px solid color-mix(in srgb,var(--accent) 20%,var(--surface)); border-radius: calc(var(--radius) * 1.6); background: linear-gradient(155deg,color-mix(in srgb,var(--accent) 7%,var(--surface)),var(--surface) 40%); box-shadow: 0 24px 64px color-mix(in srgb,var(--text) 9%,transparent),0 4px 12px color-mix(in srgb,var(--accent) 6%,transparent); }
+    .ca11ef5 { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .7rem; margin-bottom: 1rem; }
+    .ca11ef5 h2 { margin: 0; font-size: 1.35rem; letter-spacing: -.035em; }
+    .cb73b80 { display: inline-flex; align-items: center; gap: .4rem; padding: .3rem .65rem; border: 1px solid color-mix(in srgb,var(--accent) 16%,transparent); border-radius: 999px; background: color-mix(in srgb,var(--accent) 8%,var(--surface)); color: var(--accent); font-size: .72rem; font-weight: 600; }
+    .cb73b80::before { content: ""; width: .35rem; height: .35rem; border-radius: 50%; background: var(--accent); }
+    .route { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: .8rem; padding: .8rem; margin-bottom: 1rem; border: 1px solid color-mix(in srgb,var(--text) 9%,transparent); border-radius: var(--radius); background: var(--surface); }
+    .endpoint { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: .45rem; }
+    .endpoint:last-child { align-items: flex-end; }
+    .endpoint-label, .cd2cd76 { color: var(--muted); font-size: .78rem; font-weight: 500; }
+    .logo { display: flex; align-items: center; min-height: 36px; max-width: 100%; overflow-wrap: anywhere; font: 600 1rem/1.3 var(--display); }
+    .logo img, .logo svg { max-height: 36px; width: auto; max-width: 100%; object-fit: contain; }
+    .route-arrow { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: color-mix(in srgb,var(--accent) 9%,var(--surface)); }
+    .route-arrow .c70a7e5 { stroke: var(--accent); }
+    .cd2cd76 { display: block; margin-bottom: .5rem; color: var(--text); }
+    .amount-field { display: flex; align-items: center; gap: .75rem; padding: .8rem 1rem; border: 1px solid color-mix(in srgb,var(--text) 18%,transparent); border-radius: var(--radius); background: var(--bg); transition: border-color .18s ease; }
+    .amount-field:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent); }
+    .amount-field input { width: 100%; min-width: 0; padding: .2rem 0; border: 0; background: var(--bg); color: var(--text); font: 550 1.6rem/1.2 var(--display); font-variant-numeric: tabular-nums; }
+    .amount-field input:focus { outline: 0; }
+    .unit { color: var(--muted); font-size: .8rem; }
+    .c5aa202 { margin: .45rem 0 .85rem; color: var(--muted); font-size: .74rem; }
+    .field-error { margin: .5rem 0; color: var(--text); font-size: .8rem; font-weight: 600; }
+    [hidden] { display: none !important; }
+    .estimate { padding: 1rem; border-radius: var(--radius); background: linear-gradient(120deg,color-mix(in srgb,var(--accent) 12%,var(--surface)),color-mix(in srgb,var(--accent) 4%,var(--surface))); }
+    .estimate-label { margin-bottom: .25rem; color: var(--muted); font-size: .8rem; }
+    .estimate-value { display: block; color: var(--text); font: 600 clamp(1.7rem,3vw,2.5rem)/1.3 var(--display); letter-spacing: -.04em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+    .estimate-value small { color: var(--muted); font: 400 .8rem/1.4 var(--body); letter-spacing: 0; }
+    .estimate dl { display: grid; gap: .5rem; margin: .8rem 0 0; padding-top: .8rem; border-top: 1px solid color-mix(in srgb,var(--accent) 15%,transparent); font-size: .8rem; }
+    .estimate dl div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1rem; }
+    .estimate dt { color: var(--muted); }
+    .estimate dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .method { margin-block: .7rem; color: var(--muted); font-size: .75rem; }
+    .method summary { width: fit-content; color: var(--text); cursor: pointer; }
+    .method p { margin: .65rem 0 0; }
+    .cb360ea > .c01dda8 { width: 100%; }
+    .c05f648 { padding: .8rem 1rem; border: 1px solid color-mix(in srgb,var(--text) 10%,transparent); border-radius: var(--radius); background: var(--surface); }
+    .cc896fc { margin-bottom: .45rem; }
+    .c1fe47f { display: flex; align-items: center; gap: .75rem; }
+    .ccd628b { flex: 1; min-width: 0; padding: 0; border: 0; background: transparent; color: var(--text); font: 550 1.55rem/1.2 var(--display); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+    .ccd628b:focus { outline: 0; }
+    .c3f230f { position: relative; display: inline-flex; align-items: center; gap: .5rem; flex: none; padding: .4rem 1.5rem .4rem .5rem; border: 1px solid color-mix(in srgb,var(--text) 13%,transparent); border-radius: 999px; background: var(--bg); }
+    .cd53330 { width: 22px; height: 22px; border-radius: 50%; object-fit: contain; flex: none; }
+    .c1660c9 { border: 0; background: transparent; color: var(--text); font: 600 .95rem/1 var(--body); cursor: pointer; appearance: none; -webkit-appearance: none; }
+    .c1660c9:focus { outline: 0; }
+    .c3f230f::after { content: ""; position: absolute; right: .7rem; width: .42rem; height: .42rem; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: translateY(-2px) rotate(45deg); pointer-events: none; }
+    .cd74a4f { margin-top: .4rem; color: var(--muted); font-size: .78rem; font-variant-numeric: tabular-nums; }
+    .c782948 { position: relative; z-index: 1; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; margin: -.55rem auto; padding: 0; border: 3px solid var(--surface); border-radius: 50%; background: color-mix(in srgb,var(--accent) 13%,var(--surface)); color: var(--accent); cursor: pointer; transition: transform .2s ease, background .2s ease; }
+    .c782948 svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .c782948:hover { transform: rotate(180deg); background: color-mix(in srgb,var(--accent) 20%,var(--surface)); }
+    .cf9c309 { display: grid; gap: .5rem; margin: 1rem 0 0; padding-top: .9rem; border-top: 1px solid color-mix(in srgb,var(--accent) 15%,transparent); font-size: .82rem; }
+    .cf9c309 div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .2rem 1rem; }
+    .cf9c309 dt { color: var(--muted); }
+    .cf9c309 dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .c941c27 > .c01dda8 { width: 100%; margin-top: 1.05rem; }
+    .c2f50ae { padding: 2rem; border: 1px solid color-mix(in srgb,var(--text) 10%,transparent); border-radius: calc(var(--radius) * 1.3); background: var(--surface); }
+    .c8a0fbe { margin-bottom: 1.3rem; font-size: 1.65rem; font-weight: 550; letter-spacing: -.035em; }
+    .c2a617a { max-width: 100%; overflow-x: auto; }
+    .cf31ebb { width: 100%; border-collapse: collapse; text-align: left; font-size: .92rem; }
+    .cf31ebb caption { padding-bottom: 1rem; text-align: left; color: var(--muted); }
+    .cf31ebb th, .cf31ebb td { padding: 1rem 1.1rem; border-bottom: 1px solid color-mix(in srgb,var(--text) 9%,transparent); vertical-align: top; overflow-wrap: anywhere; }
+    .cf31ebb th { color: var(--muted); font-weight: 500; }
+    .cf31ebb thead { background: color-mix(in srgb,var(--accent) 5%,var(--surface)); }
+    .cf31ebb tbody tr:last-child > * { border-bottom: 0; }
+    .c3ba922 { max-width: 820px; padding-block: 4rem 2rem; }
+    .c4ba2ed { margin-bottom: 3.3rem; }
+    .c699e31 { margin: 0 0 1.1rem; font: 550 clamp(1.6rem,3vw,2.2rem)/1.2 var(--display); letter-spacing: -.035em; }
+    .ceabf81 { color: var(--muted); line-height: 1.85; overflow-wrap: anywhere; }
+    .ceabf81 p { margin-bottom: 1.2rem; }
+    .ceabf81 strong, .ceabf81 h3, .ceabf81 h4 { color: var(--text); }
+    .ceabf81 ul, .ceabf81 ol { padding-left: 1.3rem; }
+    .ceabf81 li { padding-left: .3rem; margin-block: .55rem; }
+    .ceabf81 li::marker { color: var(--accent); }
+    .ceabf81 blockquote { margin: 1.5rem 0; padding: 1rem 1.4rem; border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; background: var(--surface); color: var(--text); }
+    .ceabf81 img { height: auto; border-radius: var(--radius); }
+    .ceabf81 pre { overflow-x: auto; padding: 1rem; border-radius: var(--radius); background: var(--surface); }
+    .ceabf81 code, .ceabf81 pre { font-family: var(--body); }
+    .c7d26b2 { margin-block: .8rem; border: 1px solid color-mix(in srgb,var(--text) 11%,transparent); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
+    .c0d83ec { position: relative; padding: 1.3rem 3.5rem 1.3rem 1.4rem; list-style: none; cursor: pointer; color: var(--text); font: 550 1.04rem/1.5 var(--display); }
+    .c0d83ec::-webkit-details-marker { display: none; }
+    .c0d83ec::after { content: "+"; position: absolute; right: 1.4rem; top: 1.2rem; color: var(--accent); font-size: 1.3rem; }
+    details[open] > .c0d83ec::after { content: "−"; }
+    .c7d26b2[open] { border-color: color-mix(in srgb,var(--accent) 35%,var(--surface)); }
+    .c0d83ec:focus-visible { outline-offset: -5px; }
+    .ca848b9 { padding: 0 1.4rem 1.4rem; color: var(--muted); overflow-wrap: anywhere; }
+    .ca848b9 > :last-child { margin-bottom: 0; }
+    .c509b17 { max-width: 820px; padding-block: 1.5rem 3.5rem; border-top: 1px solid color-mix(in srgb,var(--text) 12%,transparent); }
+    .c509b17 .c8a0fbe { font-size: 1.25rem; }
+    .ca09db5 { margin: 0; padding-left: 1.25rem; color: var(--muted); font-size: .88rem; }
+    .c2cb002 { padding-block: .4rem; padding-left: .25rem; overflow-wrap: anywhere; }
+    .c2cb002 a, a.c2cb002 { color: var(--text); text-decoration-color: color-mix(in srgb,var(--accent) 45%,transparent); }
+    .c2cb002 a:hover, a.c2cb002:hover { color: var(--accent); }
+    .cd570ea { border-top: 1px solid color-mix(in srgb,var(--text) 10%,transparent); }
+    .cb5636c { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; min-height: 96px; padding-block: 1.5rem; color: var(--muted); font-size: .8rem; }
+    .cb5636c p { margin: 0; }
+    .cb5636c a { color: var(--muted); }
+    @media (max-width: 850px) { .c72dffb { grid-template-columns: minmax(0,1fr); gap: 2.5rem; padding-block: 2.5rem 3.5rem; } .c65eb17 { max-width: 650px; } .cb360ea { width: 100%; max-width: 600px; justify-self: center; } h1 { font-size: clamp(2.5rem,7vw,4rem); } .c57016c { max-width: 60ch; } }
+    @media (max-width: 540px) { .c5087f8 { width: calc(100% - 2rem); } .cd45300 { min-height: 76px; gap: .7rem; } .c1e7461 { font-size: .95rem; gap: .45rem; } .c74d22c { width: 2rem; height: 2rem; } .cca1f3e { gap: .6rem; } .cca1f3e > a:not(.c01dda8) { display: none; } .cd45300 .c01dda8 { padding-inline: .85rem; font-size: .8rem; } .c2f50ae { padding: 1.25rem; } .cf31ebb th, .cf31ebb td { padding: .8rem .55rem; } .c65eb17 > .c01dda8 { width: 100%; } .c3ba922 { padding-top: 2.8rem; } .cb5636c { align-items: flex-start; flex-direction: column; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .c01dda8, .amount-field { transition: none; } .c01dda8:hover { transform: none; } }
+  </style>
+</head>
+<body>
+  <a class="c88c2e4" href="#content">Skip to content</a>
+  <header class="cfe3ac9">
+    <nav class="cd45300 c5087f8" aria-label="Primary navigation">
+      <a class="c1e7461" href="#top" aria-label="Swap station, top of page">
+        <span class="c74d22c" aria-hidden="true"><svg class="c70a7e5" viewBox="0 0 24 24"><path d="M4 8h15m-4-4 4 4-4 4M20 16H5m4-4-4 4 4 4"/></svg></span>
+        Swap station
+      </a>
+      <div class="cca1f3e">
+        <a href="#facts">Key facts</a>
+        <a href="#sources">Sources</a>
+        <a class="c01dda8" href="/dashboard/">Swap</a>
+      </div>
+    </nav>
+  </header>
+  <div class="c5087f8" id="top">
+    <div class="c24a6ef"><nav class="c9d6266" aria-label="Breadcrumb"><a href="/dashboard/">Home</a> <span>/</span> <span>Swaps</span> <span>/</span> <span>Swap USDC to SUI</span></nav></div>
+    <section class="c72dffb" aria-labelledby="hero-title">
+      <div class="c65eb17">
+        <p class="c46c020">All swap routes</p>
+        <h1 id="hero-title">Swap USDC to <em>SUI</em></h1>
+        <p class="c57016c">To swap USDC to SUI, the fastest and cheapest route is an on-chain DEX trade directly on the Sui network, which settles in under a second for a fee measured in fractions of a cent.</p>
+        <a class="c01dda8" href="/dashboard/">Swap <svg class="c70a7e5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </div>
+      <aside class="cb360ea c941c27" data-from="SUI" aria-labelledby="widget-title">
+        <div class="ca11ef5">
+          <h2 id="widget-title">Swap</h2>
+          <span class="cb73b80">Best route</span>
+        </div>
+        <div class="c05f648">
+          <div class="cc896fc"><span class="cd2cd76">You pay</span></div>
+          <div class="c1fe47f">
+            <input id="pay-amount" class="ccd628b" type="number" inputmode="decimal" min="0" max="1000000000" step="any" value="1" aria-label="Amount you pay">
+            <span class="c3f230f">
+              <img class="cd53330" id="pay-ico" width="22" height="22" alt="" src="assets/tokens/eth.svg">
+              <select id="pay-token" class="c1660c9" aria-label="Token you pay"></select>
+            </span>
+          </div>
+          <div class="cd74a4f" id="pay-usd">—</div>
+        </div>
+        <button type="button" class="c782948" id="swap-switch" aria-label="Switch the two tokens">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v13m0 0-3-3m3 3 3-3M17 20V7m0 0-3 3m3-3 3 3"/></svg>
+        </button>
+        <div class="c05f648">
+          <div class="cc896fc"><span class="cd2cd76">You receive</span></div>
+          <div class="c1fe47f">
+            <output id="get-amount" class="ccd628b" for="pay-amount">—</output>
+            <span class="c3f230f">
+              <img class="cd53330" id="get-ico" width="22" height="22" alt="" src="assets/tokens/usdt.svg">
+              <select id="get-token" class="c1660c9" aria-label="Token you receive"></select>
+            </span>
+          </div>
+          <div class="cd74a4f" id="get-usd">—</div>
+        </div>
+        <dl class="cf9c309">
+          <div><dt>Rate</dt><dd id="swap-rate">—</dd></div>
+          <div><dt>Network fee</dt><dd id="swap-fee">0.3%</dd></div>
+        </dl>
+        <noscript><p class="c5aa202">Enable JavaScript to estimate the swap.</p></noscript>
+        <a class="c01dda8" href="/dashboard/">Swap <svg class="c70a7e5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </aside>
+    </section>
+    <section class="c2f50ae" id="facts" aria-labelledby="facts-title">
+      <h2 class="c8a0fbe" id="facts-title">Key facts</h2>
+      <div class="c2a617a"><table class="cf31ebb"><tbody><tr><th scope="row">Input</th><td>USDC (native Sui, or bridged from Ethereum/Solana)</td></tr>
+<tr><th scope="row">Output</th><td>SUI — the native Sui gas token</td></tr>
+<tr><th scope="row">Fastest route</th><td>On-chain DEX swap on Sui</td></tr>
+<tr><th scope="row">Settlement</th><td>Sub-second finality once on Sui</td></tr>
+<tr><th scope="row">Network fee</th><td>Fractions of a cent, paid in SUI</td></tr>
+<tr><th scope="row">Custody</th><td>Self-custody — the SUI lands in your wallet</td></tr></tbody></table></div>
+    </section>
+  </div>
+  <main class="c3ba922 c5087f8" id="content">
+    <section class="c4ba2ed"><h2 class="c699e31">Why Move USDC Into SUI</h2><div class="ceabf81">Converting dollar-pegged USDC into SUI is how you fund activity on the Sui network itself. SUI is the gas token: every swap, mint and transfer on the chain is paid for in it, so holding a small balance keeps your wallet operational. Beyond covering fees, moving into SUI takes a directional position on the network's native asset rather than parking value in a stablecoin that tracks the dollar. The conversion is quick and the cost is trivial, which makes topping up a routine step rather than a decision you agonise over.<h3>Gas, staking and native exposure</h3>USDC holds its value steady against the dollar; SUI moves with the market and can be staked to validators for a yield the stablecoin does not offer. Traders who expect to transact repeatedly on Sui keep a working SUI balance on hand precisely so a lack of gas never blocks the next transaction. Converting a slice of your dollar holdings into SUI early means you are never stranded mid-session, hunting for gas before you can sign the trade you actually came to make.<h3>When USDC is the smarter thing to keep</h3>If your only goal is to park dollars, there is no reason to convert. The case for moving into SUI is practical rather than speculative: you need gas to operate on the chain, you want to stake for yield, or you want direct exposure to the token that powers the network you are already using. Size the conversion to those needs rather than moving everything at once, since you can always swap more USDC into SUI later in the same sub-second flow.</div></section>
+<section class="c4ba2ed"><h2 class="c699e31">Which USDC You Hold Decides the Route</h2><div class="ceabf81">USDC is not a single token. The same ticker exists as separate assets on different chains, and the one you own dictates whether you can swap on Sui immediately or must bridge first. Check your wallet's network before anything else.<table><thead><tr><th>USDC variant</th><th>Lives on</th><th>Bridge to Sui via</th><th>Ready to swap on Sui?</th></tr></thead><tbody><tr><td>Native Sui USDC</td><td>Sui</td><td>Already there</td><td>Yes, instantly</td></tr><tr><td>ERC-20 USDC</td><td>Ethereum</td><td>Wormhole or Circle CCTP</td><td>After bridging</td></tr><tr><td>SPL USDC</td><td>Solana</td><td>Wormhole or Circle CCTP</td><td>After bridging</td></tr><tr><td>USDC on other L2s</td><td>Base, Arbitrum, etc.</td><td>Circle CCTP</td><td>After bridging</td></tr></tbody></table><h3>Native Sui USDC is the clean path</h3>Circle issues USDC natively on Sui, and that version needs no bridge at all. If your dollars already sit on Sui, open a DEX and trade them for SUI in one transaction with nothing crossing a chain boundary, no bridge finality to wait on and no extra fee stacked on top. This is why the variant you hold is the first thing to check: native Sui USDC turns the whole task into a single click.<h3>Bridged USDC via Wormhole or CCTP</h3>Dollars on Ethereum or Solana reach Sui through Wormhole's portal or Circle's Cross-Chain Transfer Protocol, which burns USDC on the source chain and mints it fresh on Sui. CCTP keeps you in canonical, Circle-issued USDC end to end, avoiding the wrapped-token detours that older bridges created and that sometimes leave you holding a non-standard asset no DEX pool prices well. Once the bridged balance shows up in your Sui wallet, it behaves exactly like native USDC for the swap that follows.</div></section>
+<section class="c4ba2ed"><h2 class="c699e31">On-Chain DEX Swap vs Cross-Chain Bridge+Swap vs CEX</h2><div class="ceabf81">There are three honest ways to end up holding SUI, and they trade off speed, cost and who controls your funds along the way. Pick by where your USDC starts and how much you value keeping your keys.<table><thead><tr><th>Route</th><th>Speed</th><th>Fees</th><th>Custody</th></tr></thead><tbody><tr><td>Same-chain DEX (USDC already on Sui)</td><td>Sub-second</td><td>Pool fee + cent-scale gas</td><td>Self-custody throughout</td></tr><tr><td>Cross-chain bridge + swap</td><td>Minutes (bridge finality)</td><td>Bridge fee + DEX fee + gas</td><td>Self-custody throughout</td></tr><tr><td>Centralized exchange</td><td>Deposit/withdraw delays</td><td>Trading + withdrawal fees</td><td>Exchange holds funds until withdrawal</td></tr></tbody></table><h3>Direct DEX swap on Sui</h3>When your USDC is already native to Sui, a decentralized exchange converts it to SUI in a single signed transaction. This is the fastest and cheapest route, with no sign-up, no custodian and sub-second settlement.<h3>Bridge first, then swap</h3>If your dollars live on Ethereum or Solana, you bridge to Sui and then run the DEX swap. The bridge step adds a few minutes of finality and a small fee, but you never hand your assets to a company — the whole journey stays in your own wallets.<h3>The centralized-exchange detour</h3>An exchange can sell USDC for SUI, but you must deposit funds, place the trade, and withdraw to your Sui address, and the exchange controls your balance at every step in between. It is the slowest path and the only one of the three that takes custody of your money while the conversion happens. It can make sense if your USDC already sits on an exchange and you would rather not touch a bridge, but for dollars already on-chain the DEX route is faster and cheaper end to end.</div></section>
+<section class="c4ba2ed"><h2 class="c699e31">Getting a Sui Wallet Ready</h2><div class="ceabf81">Before SUI can land anywhere, you need a self-custody Sui wallet to receive it. Setup takes a couple of minutes and costs nothing.<ul><li>Install a Sui-compatible wallet such as the Sui Wallet or Suiet as a browser extension or mobile app.</li><li>Create a new wallet and write the recovery phrase down offline — never store it in a screenshot, cloud note or chat.</li><li>Copy your Sui address, which begins with 0x, so you can receive bridged USDC or withdrawn funds.</li><li>Fund the wallet with a tiny amount of SUI for gas if you plan to swap bridged USDC, since the bridge arrival does not include gas.</li><li>Connect the wallet to the DEX only when you are ready to trade, and disconnect afterwards.</li></ul></div></section>
+<section class="c4ba2ed"><h2 class="c699e31">Swapping USDC to SUI Step by Step</h2><div class="ceabf81">Once your USDC is on Sui and your wallet is ready, the conversion itself is short. The sequence below assumes native or already-bridged USDC sitting in your Sui wallet.<ul><li>Open a Sui DEX and connect your self-custody wallet.</li><li>Select USDC as the token you are selling and SUI as the token you want.</li><li>Enter the USDC amount; the interface shows the quoted rate, price impact and the minimum SUI you will receive.</li><li>Set a slippage tolerance tight enough to protect the quote but loose enough that normal movement does not fail the trade.</li><li>Confirm the route and the SUI gas estimate, then sign in your wallet.</li><li>Wait for sub-second confirmation and check the SUI balance now showing in your wallet.</li></ul></div></section>
+<section class="c4ba2ed"><h2 class="c699e31">What You Actually Receive After Fees</h2><div class="ceabf81">The SUI that lands in your wallet is the input minus three deductions, and knowing them keeps the final number from surprising you. On a same-chain Sui swap the total drag is small; a cross-chain route stacks one extra fee on top.<h3>The three deductions</h3>A direct Sui swap costs the pool's swap fee, usually a fraction of a percent, plus network gas in SUI that rarely exceeds a cent even when the chain is busy. Price impact is the third factor: a large order against a shallow pool nudges the rate before it fills, so a sizable conversion into SUI can lose a little more than the fee alone suggests. Add a single bridge fee on top only if you crossed from Ethereum, Solana or another chain to reach Sui in the first place.<h3>Judge the route by net SUI</h3>Compare options by the SUI you end up holding, not the headline rate. The minimum-received figure on the DEX is the number that matters, since a thin pool with a low listed fee can still net you less than a deeper one. For large sizes, a route that splits across pools often returns more SUI than a single shallow pool would.</div></section>
+<section class="c4ba2ed"><h2 class="c699e31">Safety and the One Rule That Never Changes</h2><div class="ceabf81">A swap through an established Sui DEX never takes custody of your funds; the contract moves only what you approve for the single transaction you sign, and the SUI arrives directly in your address. The risks worth your attention are the ones at the moment of signing, not a counterparty holding your assets overnight. A legitimate swap only ever asks you to sign a transaction you can read in your own wallet, showing the exact USDC spent and SUI received — if a prompt will not tell you those amounts, do not sign it. No DEX, wallet or support channel ever needs your recovery phrase to complete a trade, and anyone who asks for it is attempting fraud. When you bridge, confirm you are on the official Wormhole portal or Circle's CCTP rather than a lookalike domain, double-check the destination Sui address before you approve the transfer, and verify any settled transaction on a Sui explorer once it lands. These habits cost seconds and remove the only failure modes that a self-custody swap actually leaves open to you.</div></section><section class="c4ba2ed c42db06" id="cluster"><h2 class="c699e31">More in this series</h2><div class="ceabf81"><ul><li><a href="/">Sui Swap</a></li><li><a href="/swap-usdt-to-sui/">Swap USDT to SUI</a></li><li><a href="/swap-eth-to-sui/">Swap ETH to SUI</a></li><li><a href="/swap-sol-to-sui/">Swap SOL to SUI</a></li></ul></div></section>
+    <details class="c7d26b2"><summary class="c0d83ec">What is the fastest way to swap USDC to SUI?</summary><div class="ca848b9">If your USDC is already native to Sui, a direct DEX swap is fastest, settling in under a second. USDC on Ethereum or Solana must bridge to Sui first, which adds a few minutes.</div></details>
+<details class="c7d26b2"><summary class="c0d83ec">Does it matter which USDC I hold?</summary><div class="ca848b9">Yes. Native Sui USDC trades for SUI immediately on a Sui DEX. ERC-20 USDC on Ethereum and SPL USDC on Solana must cross to Sui through Wormhole or Circle's CCTP before you can swap them.</div></details>
+<details class="c7d26b2"><summary class="c0d83ec">How do I move USDC from Ethereum or Solana to Sui?</summary><div class="ca848b9">Use a bridge such as Wormhole's portal or Circle's Cross-Chain Transfer Protocol. CCTP burns USDC on the source chain and mints canonical USDC on Sui, after which you swap it for SUI on a Sui DEX.</div></details>
+<details class="c7d26b2"><summary class="c0d83ec">How much does swapping USDC to SUI cost?</summary><div class="ca848b9">A same-chain Sui swap costs the pool's fee, usually a fraction of a percent, plus network gas in SUI measured in fractions of a cent. A cross-chain route adds one small bridge fee on top.</div></details>
+<details class="c7d26b2"><summary class="c0d83ec">Do I need an account to swap USDC to SUI?</summary><div class="ca848b9">No. On a DEX you connect a self-custody wallet and trade on-chain with no sign-up and no custodian. Only the centralized-exchange route requires an account that holds your funds until withdrawal.</div></details>
+<details class="c7d26b2"><summary class="c0d83ec">Why do I need SUI gas if I'm swapping from USDC?</summary><div class="ca848b9">Every Sui transaction, including the swap itself, is paid for in SUI. If you bridge USDC in, the arriving tokens include no gas, so keep a tiny SUI balance on hand to sign the swap.</div></details>
+<details class="c7d26b2"><summary class="c0d83ec">How do I know how much SUI I'll receive?</summary><div class="ca848b9">The DEX shows a minimum-received figure before you sign, reflecting the rate, pool fee and price impact. Compare routes by that net SUI amount rather than the headline exchange rate.</div></details>
+  </main>
+  <section class="c509b17 c5087f8" id="sources" aria-labelledby="sources-title">
+    <h2 class="c8a0fbe" id="sources-title">Sources</h2>
+    <ul class="ca09db5"><li><a class="c2cb002" href="https://sui.io/" rel="nofollow noopener" target="_blank">Sui official site</a></li>
+<li><a class="c2cb002" href="https://docs.sui.io/" rel="nofollow noopener" target="_blank">Sui documentation</a></li>
+<li><a class="c2cb002" href="https://www.circle.com/usdc" rel="nofollow noopener" target="_blank">Circle USDC</a></li>
+<li><a class="c2cb002" href="https://wormhole.com/" rel="nofollow noopener" target="_blank">Wormhole</a></li>
+<li><a class="c2cb002" href="https://www.coingecko.com/" rel="nofollow noopener" target="_blank">CoinGecko</a></li>
+<li><a class="c2cb002" href="https://suiscan.xyz/" rel="nofollow noopener" target="_blank">SuiScan explorer</a></li></ul>
+  </section>
+  <footer class="cd570ea">
+    <div class="cb5636c c5087f8">
+      <p>Updated Oct 12, 2026</p>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+  <script>
+    (() => {
+      const TOKENS = [
+        { s: 'ETH', f: 'eth', p: 2550 }, { s: 'BTC', f: 'btc', p: 62000 },
+        { s: 'USDT', f: 'usdt', p: 1 }, { s: 'USDC', f: 'usdc', p: 1 },
+        { s: 'BNB', f: 'bnb', p: 585 }, { s: 'SOL', f: 'sol', p: 145 },
+        { s: 'ARB', f: 'arb', p: 0.62 }, { s: 'OP', f: 'optimism', p: 1.65 },
+        { s: 'MATIC', f: 'polygon', p: 0.42 }, { s: 'AVAX', f: 'avalanche', p: 27 },
+        { s: 'SUI', f: 'sui', p: 1.35 }, { s: 'LTC', f: 'ltc', p: 72 },
+        { s: 'TRX', f: 'trx', p: 0.16 }, { s: 'XMR', f: 'xmr', p: 155 },
+        { s: 'XRP', f: 'xrp', p: 0.52 }, { s: 'ZEC', f: 'zec', p: 32 }
+      ];
+      const FEE = 0.003;
+      const $ = (id) => document.getElementById(id);
+      const payAmt = $('pay-amount'), payTok = $('pay-token'), payUsd = $('pay-usd'), payIco = $('pay-ico');
+      const getAmt = $('get-amount'), getTok = $('get-token'), getUsd = $('get-usd'), getIco = $('get-ico');
+      const rateEl = $('swap-rate');
+      const tok = (s) => TOKENS.find((t) => t.s === s);
+      const num = (n) => new Intl.NumberFormat('en', { maximumFractionDigits: n >= 1 ? 4 : 6 }).format(n);
+      const usd = (v) => '~$' + new Intl.NumberFormat('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v);
+      TOKENS.forEach((t) => {
+        [payTok, getTok].forEach((sel) => { const o = document.createElement('option'); o.value = t.s; o.textContent = t.s; sel.appendChild(o); });
+      });
+      const widget = document.querySelector('.c941c27');
+      const defFrom = (widget && widget.dataset.from) || 'ETH';
+      const fromOk = TOKENS.some((t) => t.s === defFrom) ? defFrom : 'ETH';
+      payTok.value = fromOk;
+      getTok.value = (fromOk === 'USDT') ? 'ETH' : 'USDT';
+      const calc = () => {
+        const pf = tok(payTok.value), gt = tok(getTok.value);
+        payIco.src = 'assets/tokens/' + pf.f + '.svg'; payIco.alt = pf.s;
+        getIco.src = 'assets/tokens/' + gt.f + '.svg'; getIco.alt = gt.s;
+        rateEl.textContent = '1 ' + pf.s + ' ≈ ' + num(pf.p / gt.p) + ' ' + gt.s;
+        const a = parseFloat(payAmt.value);
+        if (!Number.isFinite(a) || a <= 0) { getAmt.textContent = '—'; payUsd.textContent = '—'; getUsd.textContent = '—'; return; }
+        const out = a * (pf.p / gt.p) * (1 - FEE);
+        getAmt.textContent = num(out) + ' ' + gt.s;
+        payUsd.textContent = usd(a * pf.p);
+        getUsd.textContent = usd(out * gt.p);
+      };
+      const distinct = (changed, other) => { if (changed.value === other.value) { other.value = (TOKENS.find((t) => t.s !== changed.value) || TOKENS[0]).s; } };
+      payAmt.addEventListener('input', calc);
+      payTok.addEventListener('change', () => { distinct(payTok, getTok); calc(); });
+      getTok.addEventListener('change', () => { distinct(getTok, payTok); calc(); });
+      $('swap-switch').addEventListener('click', () => { const t = payTok.value; payTok.value = getTok.value; getTok.value = t; calc(); });
+      calc();
+    })();
+  </script>
+</body>
+</html>

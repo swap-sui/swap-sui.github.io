@@ -1,0 +1,3 @@
+# Swap SOL to SUI
+
+Swap SOL to SUI across two fast non-EVM L1s: bridge Solana to Sui with Wormhole and settle on a DEX, or route through an aggregator. Compare speed, fees and hops, set up a Sui wallet, and see the amount you keep after the bridge takes its cut.

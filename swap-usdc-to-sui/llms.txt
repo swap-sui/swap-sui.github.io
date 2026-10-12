@@ -1,0 +1,3 @@
+# Swap USDC to SUI
+
+Swap USDC to SUI in seconds. Compare on-chain DEX, bridge, and CEX routes, learn which USDC variant you hold, and keep the SUI you receive after fees.
