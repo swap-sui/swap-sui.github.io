@@ -7,6 +7,7 @@
   <meta name="description" content="Swap SOL to SUI across two fast non-EVM L1s: bridge Solana to Sui with Wormhole and settle on a DEX, or route through an aggregator. Compare speed, fees and hops, set up a Sui wallet, and see the amount you keep after the bridge takes its cut.">
   <link rel="canonical" href="https://swap-sui.github.io/swap-sol-to-sui/">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Website">
   <meta property="og:title" content="Swap SOL to SUI">
   <meta property="og:description" content="Swap SOL to SUI across two fast non-EVM L1s: bridge Solana to Sui with Wormhole and settle on a DEX, or route through an aggregator. Compare speed, fees and hops, set up a Sui wallet, and see the amount you keep after the bridge takes its cut.">
   <meta property="og:url" content="https://swap-sui.github.io/swap-sol-to-sui/">
@@ -15,294 +16,598 @@
   <meta name="twitter:title" content="Swap SOL to SUI">
   <meta name="twitter:description" content="Swap SOL to SUI across two fast non-EVM L1s: bridge Solana to Sui with Wormhole and settle on a DEX, or route through an aggregator. Compare speed, fees and hops, set up a Sui wallet, and see the amount you keep after the bridge takes its cut.">
   <meta name="twitter:image" content="https://swap-sui.github.io/og.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Albert+Sans:wght@500;600;700&display=swap">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://swap-sui.github.io/#website", "url": "https://swap-sui.github.io/swap-sol-to-sui/", "name": "Swap SOL to SUI — Cross-Chain Route & Fees"}, {"@type": "WebPage", "@id": "https://swap-sui.github.io/#webpage", "url": "https://swap-sui.github.io/swap-sol-to-sui/", "name": "Swap SOL to SUI — Cross-Chain Route & Fees", "isPartOf": {"@id": "https://swap-sui.github.io/#website"}, "description": "Swap SOL to SUI across two fast non-EVM L1s: bridge Solana to Sui with Wormhole and settle on a DEX, or route through an aggregator. Compare speed, fees and hops, set up a Sui wallet, and see the amount you keep after the bridge takes its cut.", "datePublished": "2026-10-12", "dateModified": "2026-10-12"}, {"@type": "SoftwareApplication", "name": "Swap SOL to SUI", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://swap-sui.github.io/swap-sol-to-sui/"}, {"@type": "ListItem", "position": 2, "name": "Swaps"}, {"@type": "ListItem", "position": 3, "name": "Swap SOL to SUI"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I swap SOL to SUI in a single step?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, with a cross-chain aggregator that bundles the SOL sell, the bridge hop and the SUI buy into one signature. It routes through a bridge underneath, but you approve the whole path once and see the net SUI up front."}}, {"@type": "Question", "name": "Why can't SOL and SUI trade in one pool?", "acceptedAnswer": {"@type": "Answer", "text": "They live on separate blockchains, Solana and Sui, so there is no shared pool holding both. The swap has to cross a bridge that relays value between the two networks, which is why it is a cross-chain move rather than a normal DEX trade."}}, {"@type": "Question", "name": "What is the main cost of swapping SOL to SUI?", "acceptedAnswer": {"@type": "Answer", "text": "The bridge hop. Both chains are so cheap that gas and the swap fees round to noise; the bridge's relayer fee and asset spread are the largest line item, so comparing routes by net SUI received is what saves you money."}}, {"@type": "Question", "name": "How long does swapping SOL to SUI take?", "acceptedAnswer": {"@type": "Answer", "text": "Often one to a few minutes with a fast aggregator, longer if the route uses a bridge that waits for source-chain finality during congestion. Both chains confirm sub-second, so the wait is the bridge window, not the swaps."}}, {"@type": "Question", "name": "Do I need a Sui wallet to receive SUI?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. SUI settles to a Sui address, which a Solana wallet cannot hold. Set up a Sui-native wallet such as Suiet or Slush, or use Phantom's Sui support, and have the receiving address ready before you start."}}, {"@type": "Question", "name": "Do I need an account to swap SOL to SUI on-chain?", "acceptedAnswer": {"@type": "Answer", "text": "No. Aggregator and bridge routes are self-custody with no sign-up; you connect a wallet and sign. A centralized exchange is the one path that requires a sign-up, since it holds funds during the transfer."}}, {"@type": "Question", "name": "Which bridge connects Solana and Sui?", "acceptedAnswer": {"@type": "Answer", "text": "Wormhole provides the messaging layer between Solana and Sui, which most aggregators and manual routes rely on. You can bridge a liquid asset like USDC across it, then swap that for SUI on a Sui DEX such as Cetus."}}]}]}</script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='currentColor' d='M5 7h9v9H5zm13 0h9v9h-9zM5 20h22v5H5z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Albert+Sans:wght@500;600;700&display=swap">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://swap-sui.github.io/#website", "url": "https://swap-sui.github.io/swap-sol-to-sui/", "name": "Swap SOL to SUI — Cross-Chain Route & Fees"}, {"@type": "WebPage", "@id": "https://swap-sui.github.io/#webpage", "url": "https://swap-sui.github.io/swap-sol-to-sui/", "name": "Swap SOL to SUI — Cross-Chain Route & Fees", "isPartOf": {"@id": "https://swap-sui.github.io/#website"}, "description": "Swap SOL to SUI across two fast non-EVM L1s: bridge Solana to Sui with Wormhole and settle on a DEX, or route through an aggregator. Compare speed, fees and hops, set up a Sui wallet, and see the amount you keep after the bridge takes its cut.", "datePublished": "2026-10-14", "dateModified": "2026-10-14"}, {"@type": "SoftwareApplication", "name": "Swap SOL to SUI", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://swap-sui.github.io/swap-sol-to-sui/"}, {"@type": "ListItem", "position": 2, "name": "Swaps"}, {"@type": "ListItem", "position": 3, "name": "Swap SOL to SUI"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I swap SOL to SUI in a single step?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, with a cross-chain aggregator that bundles the SOL sell, the bridge hop and the SUI buy into one signature. It routes through a bridge underneath, but you approve the whole path once and see the net SUI up front."}}, {"@type": "Question", "name": "Why can't SOL and SUI trade in one pool?", "acceptedAnswer": {"@type": "Answer", "text": "They live on separate blockchains, Solana and Sui, so there is no shared pool holding both. The swap has to cross a bridge that relays value between the two networks, which is why it is a cross-chain move rather than a normal DEX trade."}}, {"@type": "Question", "name": "What is the main cost of swapping SOL to SUI?", "acceptedAnswer": {"@type": "Answer", "text": "The bridge hop. Both chains are so cheap that gas and the swap fees round to noise; the bridge's relayer fee and asset spread are the largest line item, so comparing routes by net SUI received is what saves you money."}}, {"@type": "Question", "name": "How long does swapping SOL to SUI take?", "acceptedAnswer": {"@type": "Answer", "text": "Often one to a few minutes with a fast aggregator, longer if the route uses a bridge that waits for source-chain finality during congestion. Both chains confirm sub-second, so the wait is the bridge window, not the swaps."}}, {"@type": "Question", "name": "Do I need a Sui wallet to receive SUI?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. SUI settles to a Sui address, which a Solana wallet cannot hold. Set up a Sui-native wallet such as Suiet or Slush, or use Phantom's Sui support, and have the receiving address ready before you start."}}, {"@type": "Question", "name": "Do I need an account to swap SOL to SUI on-chain?", "acceptedAnswer": {"@type": "Answer", "text": "No. Aggregator and bridge routes are self-custody with no sign-up; you connect a wallet and sign. A centralized exchange is the one path that requires a sign-up, since it holds funds during the transfer."}}, {"@type": "Question", "name": "Which bridge connects Solana and Sui?", "acceptedAnswer": {"@type": "Answer", "text": "Wormhole provides the messaging layer between Solana and Sui, which most aggregators and manual routes rely on. You can bridge a liquid asset like USDC across it, then swap that for SUI on a Sui DEX such as Cetus."}}]}]}</script>
   <style>
-    :root{--bg:#FAF9FC;--surface:#FFFFFF;--text:#16131F;--muted:#5F5870;--accent:#6D28D9;--accent-ink:#FFFFFF;--radius:16px;--display:"Albert Sans";--body:"Albert Sans"}
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
-    body { margin: 0; background: var(--bg); color: var(--text); font: 400 1rem/1.7 var(--body); -webkit-font-smoothing: antialiased; }
-    a { color: var(--accent); text-underline-offset: .22em; }
-    a:hover { text-decoration-thickness: .12em; }
-    :focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
-    ::selection { background: var(--accent); color: var(--accent-ink); }
-    h1, h2, h3, h4, h5, h6 { font-family: var(--display); line-height: 1.15; text-wrap: balance; }
-    p, h1, h2, h3 { margin-top: 0; }
-    img, svg { max-width: 100%; vertical-align: middle; }
-    .c5abc32 { width: min(1180px, calc(100% - 3rem)); margin-inline: auto; }
-    .c254475 { position: absolute; z-index: 5; top: .5rem; left: 1rem; padding: .7rem 1rem; background: var(--surface); transform: translateY(-180%); border-radius: var(--radius); }
-    .c254475:focus { transform: translateY(0); }
-    .ca4d353 { border-bottom: 1px solid color-mix(in srgb,var(--text) 10%,transparent); }
-    .c8cf5bd { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
-    .c437275 { display: inline-flex; align-items: center; gap: .7rem; color: var(--text); font: 650 1.12rem/1.2 var(--display); text-decoration: none; }
-    .c64814e { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: calc(var(--radius) * .6); background: var(--accent); color: var(--accent-ink); }
-    .ce232f7 { width: 1.2rem; height: 1.2rem; fill: none; stroke: var(--accent-ink); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: 0 0 auto; }
-    .c2869b9 { display: flex; align-items: center; gap: 1.8rem; }
-    .c2869b9 > a { font-size: .88rem; font-weight: 600; text-decoration: none; }
-    .c2869b9 > a:not(.c5ae0e3) { color: var(--muted); }
-    .c5ae0e3 { display: inline-flex; align-items: center; justify-content: center; gap: .8rem; min-height: 52px; padding: .85rem 1.4rem; border: 1px solid color-mix(in srgb,var(--accent-ink) 12%,transparent); border-radius: var(--radius); background: linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 88%,var(--text))); color: var(--accent-ink); font: 650 .95rem/1.3 var(--body); text-decoration: none; box-shadow: 0 6px 18px color-mix(in srgb,var(--accent) 17%,transparent); transition: transform .18s ease, box-shadow .18s ease; }
-    .c5ae0e3:hover { transform: translateY(-2px); box-shadow: 0 9px 24px color-mix(in srgb,var(--accent) 25%,transparent); }
-    .c8cf5bd .c5ae0e3 { min-height: 42px; padding: .65rem 1rem; }
-    .ca0d556 { padding-block: 1rem 0; color: var(--muted); font-size: .8rem; overflow-wrap: anywhere; }
-    .c068048 { color: var(--muted); }
-    .c068048 a, a.c068048 { color: var(--muted); text-decoration: none; }
-    .c068048 a:hover, a.c068048:hover { color: var(--accent); text-decoration: underline; }
-    .c068048 ol, .c068048 ul { display: flex; flex-wrap: wrap; gap: .5rem 1rem; padding: 0; margin: 0; list-style: none; }
-    .c19624a { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,1fr); gap: clamp(2rem,5vw,4.5rem); align-items: start; padding-block: 1.5rem 3rem; }
-    .ce6fd31 { display: inline-flex; align-items: center; gap: .55rem; margin-bottom: 1.3rem; color: var(--accent); font-size: .86rem; font-weight: 600; }
-    .ce6fd31::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb,var(--accent) 9%,transparent); }
-    h1 { margin-bottom: 1.4rem; font-size: clamp(2.5rem,4.7vw,4.35rem); font-weight: 600; letter-spacing: -.055em; overflow-wrap: anywhere; }
-    h1 em { color: var(--accent); font-style: normal; }
-    .c95bd74 { max-width: 48ch; margin-bottom: 2rem; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
-    .c21d11d { position: relative; min-width: 0; padding: clamp(1.1rem,2.4vw,1.5rem); border: 1px solid color-mix(in srgb,var(--accent) 20%,var(--surface)); border-radius: calc(var(--radius) * 1.6); background: linear-gradient(155deg,color-mix(in srgb,var(--accent) 7%,var(--surface)),var(--surface) 40%); box-shadow: 0 24px 64px color-mix(in srgb,var(--text) 9%,transparent),0 4px 12px color-mix(in srgb,var(--accent) 6%,transparent); }
-    .cec204e { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .7rem; margin-bottom: 1rem; }
-    .cec204e h2 { margin: 0; font-size: 1.35rem; letter-spacing: -.035em; }
-    .c231c7a { display: inline-flex; align-items: center; gap: .4rem; padding: .3rem .65rem; border: 1px solid color-mix(in srgb,var(--accent) 16%,transparent); border-radius: 999px; background: color-mix(in srgb,var(--accent) 8%,var(--surface)); color: var(--accent); font-size: .72rem; font-weight: 600; }
-    .c231c7a::before { content: ""; width: .35rem; height: .35rem; border-radius: 50%; background: var(--accent); }
-    .route { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: .8rem; padding: .8rem; margin-bottom: 1rem; border: 1px solid color-mix(in srgb,var(--text) 9%,transparent); border-radius: var(--radius); background: var(--surface); }
-    .endpoint { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: .45rem; }
-    .endpoint:last-child { align-items: flex-end; }
-    .endpoint-label, .caf4899 { color: var(--muted); font-size: .78rem; font-weight: 500; }
-    .logo { display: flex; align-items: center; min-height: 36px; max-width: 100%; overflow-wrap: anywhere; font: 600 1rem/1.3 var(--display); }
-    .logo img, .logo svg { max-height: 36px; width: auto; max-width: 100%; object-fit: contain; }
-    .route-arrow { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: color-mix(in srgb,var(--accent) 9%,var(--surface)); }
-    .route-arrow .ce232f7 { stroke: var(--accent); }
-    .caf4899 { display: block; margin-bottom: .5rem; color: var(--text); }
-    .amount-field { display: flex; align-items: center; gap: .75rem; padding: .8rem 1rem; border: 1px solid color-mix(in srgb,var(--text) 18%,transparent); border-radius: var(--radius); background: var(--bg); transition: border-color .18s ease; }
-    .amount-field:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent); }
-    .amount-field input { width: 100%; min-width: 0; padding: .2rem 0; border: 0; background: var(--bg); color: var(--text); font: 550 1.6rem/1.2 var(--display); font-variant-numeric: tabular-nums; }
-    .amount-field input:focus { outline: 0; }
-    .unit { color: var(--muted); font-size: .8rem; }
-    .c01099e { margin: .45rem 0 .85rem; color: var(--muted); font-size: .74rem; }
-    .field-error { margin: .5rem 0; color: var(--text); font-size: .8rem; font-weight: 600; }
-    [hidden] { display: none !important; }
-    .estimate { padding: 1rem; border-radius: var(--radius); background: linear-gradient(120deg,color-mix(in srgb,var(--accent) 12%,var(--surface)),color-mix(in srgb,var(--accent) 4%,var(--surface))); }
-    .estimate-label { margin-bottom: .25rem; color: var(--muted); font-size: .8rem; }
-    .estimate-value { display: block; color: var(--text); font: 600 clamp(1.7rem,3vw,2.5rem)/1.3 var(--display); letter-spacing: -.04em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-    .estimate-value small { color: var(--muted); font: 400 .8rem/1.4 var(--body); letter-spacing: 0; }
-    .estimate dl { display: grid; gap: .5rem; margin: .8rem 0 0; padding-top: .8rem; border-top: 1px solid color-mix(in srgb,var(--accent) 15%,transparent); font-size: .8rem; }
-    .estimate dl div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1rem; }
-    .estimate dt { color: var(--muted); }
-    .estimate dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
-    .method { margin-block: .7rem; color: var(--muted); font-size: .75rem; }
-    .method summary { width: fit-content; color: var(--text); cursor: pointer; }
-    .method p { margin: .65rem 0 0; }
-    .c21d11d > .c5ae0e3 { width: 100%; }
-    .cd60fd2 { padding: .8rem 1rem; border: 1px solid color-mix(in srgb,var(--text) 10%,transparent); border-radius: var(--radius); background: var(--surface); }
-    .c17bb01 { margin-bottom: .45rem; }
-    .c9503af { display: flex; align-items: center; gap: .75rem; }
-    .c1ffdae { flex: 1; min-width: 0; padding: 0; border: 0; background: transparent; color: var(--text); font: 550 1.55rem/1.2 var(--display); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-    .c1ffdae:focus { outline: 0; }
-    .cf45d9b { position: relative; display: inline-flex; align-items: center; gap: .5rem; flex: none; padding: .4rem 1.5rem .4rem .5rem; border: 1px solid color-mix(in srgb,var(--text) 13%,transparent); border-radius: 999px; background: var(--bg); }
-    .c85eacf { width: 22px; height: 22px; border-radius: 50%; object-fit: contain; flex: none; }
-    .c8346bc { border: 0; background: transparent; color: var(--text); font: 600 .95rem/1 var(--body); cursor: pointer; appearance: none; -webkit-appearance: none; }
-    .c8346bc:focus { outline: 0; }
-    .cf45d9b::after { content: ""; position: absolute; right: .7rem; width: .42rem; height: .42rem; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: translateY(-2px) rotate(45deg); pointer-events: none; }
-    .c46c506 { margin-top: .4rem; color: var(--muted); font-size: .78rem; font-variant-numeric: tabular-nums; }
-    .c99e035 { position: relative; z-index: 1; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; margin: -.55rem auto; padding: 0; border: 3px solid var(--surface); border-radius: 50%; background: color-mix(in srgb,var(--accent) 13%,var(--surface)); color: var(--accent); cursor: pointer; transition: transform .2s ease, background .2s ease; }
-    .c99e035 svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .c99e035:hover { transform: rotate(180deg); background: color-mix(in srgb,var(--accent) 20%,var(--surface)); }
-    .cd162a0 { display: grid; gap: .5rem; margin: 1rem 0 0; padding-top: .9rem; border-top: 1px solid color-mix(in srgb,var(--accent) 15%,transparent); font-size: .82rem; }
-    .cd162a0 div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .2rem 1rem; }
-    .cd162a0 dt { color: var(--muted); }
-    .cd162a0 dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
-    .cdb2057 > .c5ae0e3 { width: 100%; margin-top: 1.05rem; }
-    .ca2e105 { padding: 2rem; border: 1px solid color-mix(in srgb,var(--text) 10%,transparent); border-radius: calc(var(--radius) * 1.3); background: var(--surface); }
-    .c67c533 { margin-bottom: 1.3rem; font-size: 1.65rem; font-weight: 550; letter-spacing: -.035em; }
-    .c336a35 { max-width: 100%; overflow-x: auto; }
-    .c6f2a49 { width: 100%; border-collapse: collapse; text-align: left; font-size: .92rem; }
-    .c6f2a49 caption { padding-bottom: 1rem; text-align: left; color: var(--muted); }
-    .c6f2a49 th, .c6f2a49 td { padding: 1rem 1.1rem; border-bottom: 1px solid color-mix(in srgb,var(--text) 9%,transparent); vertical-align: top; overflow-wrap: anywhere; }
-    .c6f2a49 th { color: var(--muted); font-weight: 500; }
-    .c6f2a49 thead { background: color-mix(in srgb,var(--accent) 5%,var(--surface)); }
-    .c6f2a49 tbody tr:last-child > * { border-bottom: 0; }
-    .c08c415 { max-width: 820px; padding-block: 4rem 2rem; }
-    .c771392 { margin-bottom: 3.3rem; }
-    .cb9fec5 { margin: 0 0 1.1rem; font: 550 clamp(1.6rem,3vw,2.2rem)/1.2 var(--display); letter-spacing: -.035em; }
-    .c6fa367 { color: var(--muted); line-height: 1.85; overflow-wrap: anywhere; }
-    .c6fa367 p { margin-bottom: 1.2rem; }
-    .c6fa367 strong, .c6fa367 h3, .c6fa367 h4 { color: var(--text); }
-    .c6fa367 ul, .c6fa367 ol { padding-left: 1.3rem; }
-    .c6fa367 li { padding-left: .3rem; margin-block: .55rem; }
-    .c6fa367 li::marker { color: var(--accent); }
-    .c6fa367 blockquote { margin: 1.5rem 0; padding: 1rem 1.4rem; border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; background: var(--surface); color: var(--text); }
-    .c6fa367 img { height: auto; border-radius: var(--radius); }
-    .c6fa367 pre { overflow-x: auto; padding: 1rem; border-radius: var(--radius); background: var(--surface); }
-    .c6fa367 code, .c6fa367 pre { font-family: var(--body); }
-    .cf1aec2 { margin-block: .8rem; border: 1px solid color-mix(in srgb,var(--text) 11%,transparent); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
-    .c53f229 { position: relative; padding: 1.3rem 3.5rem 1.3rem 1.4rem; list-style: none; cursor: pointer; color: var(--text); font: 550 1.04rem/1.5 var(--display); }
-    .c53f229::-webkit-details-marker { display: none; }
-    .c53f229::after { content: "+"; position: absolute; right: 1.4rem; top: 1.2rem; color: var(--accent); font-size: 1.3rem; }
-    details[open] > .c53f229::after { content: "−"; }
-    .cf1aec2[open] { border-color: color-mix(in srgb,var(--accent) 35%,var(--surface)); }
-    .c53f229:focus-visible { outline-offset: -5px; }
-    .c48f0b0 { padding: 0 1.4rem 1.4rem; color: var(--muted); overflow-wrap: anywhere; }
-    .c48f0b0 > :last-child { margin-bottom: 0; }
-    .c1e8a36 { max-width: 820px; padding-block: 1.5rem 3.5rem; border-top: 1px solid color-mix(in srgb,var(--text) 12%,transparent); }
-    .c1e8a36 .c67c533 { font-size: 1.25rem; }
-    .cc436e4 { margin: 0; padding-left: 1.25rem; color: var(--muted); font-size: .88rem; }
-    .c5e6e1b { padding-block: .4rem; padding-left: .25rem; overflow-wrap: anywhere; }
-    .c5e6e1b a, a.c5e6e1b { color: var(--text); text-decoration-color: color-mix(in srgb,var(--accent) 45%,transparent); }
-    .c5e6e1b a:hover, a.c5e6e1b:hover { color: var(--accent); }
-    .ccaa5ee { border-top: 1px solid color-mix(in srgb,var(--text) 10%,transparent); }
-    .c58478c { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; min-height: 96px; padding-block: 1.5rem; color: var(--muted); font-size: .8rem; }
-    .c58478c p { margin: 0; }
-    .c58478c a { color: var(--muted); }
-    @media (max-width: 850px) { .c19624a { grid-template-columns: minmax(0,1fr); gap: 2.5rem; padding-block: 2.5rem 3.5rem; } .cf13320 { max-width: 650px; } .c21d11d { width: 100%; max-width: 600px; justify-self: center; } h1 { font-size: clamp(2.5rem,7vw,4rem); } .c95bd74 { max-width: 60ch; } }
-    @media (max-width: 540px) { .c5abc32 { width: calc(100% - 2rem); } .c8cf5bd { min-height: 76px; gap: .7rem; } .c437275 { font-size: .95rem; gap: .45rem; } .c64814e { width: 2rem; height: 2rem; } .c2869b9 { gap: .6rem; } .c2869b9 > a:not(.c5ae0e3) { display: none; } .c8cf5bd .c5ae0e3 { padding-inline: .85rem; font-size: .8rem; } .ca2e105 { padding: 1.25rem; } .c6f2a49 th, .c6f2a49 td { padding: .8rem .55rem; } .cf13320 > .c5ae0e3 { width: 100%; } .c08c415 { padding-top: 2.8rem; } .c58478c { align-items: flex-start; flex-direction: column; } }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .c5ae0e3, .amount-field { transition: none; } .c5ae0e3:hover { transform: none; } }
-  </style>
+:root{--bg:#FAF9FC;--surface:#FFFFFF;--text:#16131F;--muted:#5F5870;--accent:#6D28D9;--accent-ink:#FFFFFF;--radius:16px;--display:"Albert Sans";--body:"Albert Sans";--line:color-mix(in srgb,var(--text) 13%,var(--bg));--line-strong:color-mix(in srgb,var(--text) 23%,var(--surface));--soft:color-mix(in srgb,var(--surface) 72%,var(--bg));--wash:color-mix(in srgb,var(--accent) 6%,var(--surface));--accent-line:color-mix(in srgb,var(--accent) 27%,var(--surface));--link:color-mix(in srgb,var(--accent) 65%,var(--text));--copy:color-mix(in srgb,var(--text) 87%,var(--muted));--secondary:color-mix(in srgb,var(--text) 28%,var(--muted));--shadow:0 12px 32px -20px color-mix(in srgb,var(--text) 23%,transparent);--shell:1184px;--rail:232px;--gap:clamp(36px,5vw,72px);}
+*,*::before,*::after{box-sizing:border-box;}
+html{background:var(--bg);scroll-behavior:smooth;scroll-padding-block-start:28px;-webkit-text-size-adjust:100%;}
+body{margin:0;color:var(--text);background:var(--bg);font-family:var(--body),system-ui,sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-wrap:anywhere;}
+::selection{background:var(--accent);color:var(--accent-ink);}
+[hidden]{display:none !important;}
+a{color:var(--link);text-decoration-thickness:1px;text-underline-offset:.22em;transition:color .18s ease,background-color .18s ease,border-color .18s ease;}
+a:hover{color:var(--text);}
+:where(a,button,summary,[tabindex]):focus-visible{outline:3px solid var(--accent);outline-offset:5px;}
+:where(h2,main,section,div)[tabindex="-1"]:focus{outline:none;}
+:where(h2,main,section,div)[tabindex="-1"]:focus-visible{outline:2px solid var(--accent-line);outline-offset:8px;}
+button,summary,a{-webkit-tap-highlight-color:color-mix(in srgb,var(--accent) 16%,transparent);}
+button{font:inherit;}
+svg,img,video{max-width:100%;vertical-align:middle;}
+img,video{height:auto;}
+:where(h1,h2,h3,h4){margin-block-start:0;color:var(--text);font-family:var(--display),system-ui,sans-serif;font-weight:600;text-wrap:balance;}
+:where(p,ul,ol,dl,blockquote,figure){margin-block-start:0;}
+.c5abc32{width:min(calc(100% - 64px),var(--shell));margin-inline:auto;}
+.ce232f7{width:20px;height:20px;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+.c254475{position:fixed;z-index:20;top:12px;left:16px;padding:10px 18px;border-radius:var(--radius);background:var(--text);color:var(--bg);font-weight:600;transform:translateY(-180%);}
+.c254475:focus{color:var(--bg);transform:translateY(0);}
+.c88fafc{position:fixed;z-index:15;inset:0 0 auto;height:3px;pointer-events:none;background:color-mix(in srgb,var(--accent) 12%,transparent);}
+.c88fafc span{display:block;height:100%;background:var(--accent);transform:scaleX(0);transform-origin:left center;}
+.c7dff9b{border-block-end:1px solid var(--line);background:var(--surface);}
+.c0ea890{display:flex;min-height:76px;align-items:center;justify-content:space-between;gap:20px;padding-block:12px;}
+.c437275{display:inline-flex;align-items:center;gap:11px;color:var(--text);font-family:var(--display),system-ui,sans-serif;font-size:20px;font-weight:700;letter-spacing:-.045em;line-height:1;flex-shrink:0;}
+.c64814e{display:grid;width:33px;height:33px;place-items:center;border:1px solid var(--accent-line);border-radius:calc(var(--radius) * .4);color:var(--link);background:var(--wash);}
+.c64814e svg{width:24px;height:24px;fill:currentColor;}
+.c2db15e{display:flex;align-items:center;gap:26px;min-width:0;}
+.c82e1fd{color:var(--secondary);font-size:13px;font-weight:500;text-decoration:none;}
+.c5ae0e3{display:inline-flex;min-height:48px;min-width:112px;align-items:center;justify-content:center;gap:20px;padding:12px 22px;border:1px solid var(--accent);border-radius:calc(var(--radius) * .6);background:var(--accent);color:var(--accent-ink);font-size:14px;font-weight:700;line-height:1.35;text-align:center;text-decoration:none;box-shadow:0 2px 0 color-mix(in srgb,var(--text) 7%,transparent);transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease;}
+.c5ae0e3:hover{color:var(--accent-ink);background:color-mix(in srgb,var(--accent) 92%,var(--text));border-color:color-mix(in srgb,var(--accent) 92%,var(--text));box-shadow:0 4px 14px color-mix(in srgb,var(--accent) 19%,transparent);}
+.c5ae0e3:active{box-shadow:none;}
+.cb26bfe{font-size:20px;font-weight:400;line-height:1;flex-shrink:0;}
+.c4cd3a2{min-height:42px;padding:10px 19px;font-size:13px;}
+.c19624a{padding-block:24px 38px;border-block-end:1px solid var(--line);}
+.c068048{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin-block-end:27px;color:var(--muted);font-size:12px;line-height:1.65;}
+.c068048 a{color:var(--secondary);text-decoration:none;}
+.c068048 a:hover{color:var(--link);text-decoration:underline;}
+.c068048 span{min-width:0;overflow-wrap:anywhere;}
+.c068048 span:last-child{color:var(--secondary);}
+.c9249b6{display:grid;justify-items:start;align-items:start;}
+.ce6fd31{display:inline-flex;align-items:center;gap:7px;margin:0 0 17px;padding:5px 10px;border:1px solid var(--accent-line);border-radius:100px;color:var(--link);background:var(--wash);font-size:12px;font-weight:600;line-height:1.35;}
+.ce6fd31 .ce232f7{width:14px;height:14px;}
+h1{max-width:25ch;margin:0;font-size:clamp(34px,4.8vw,62px);font-weight:600;line-height:1.09;letter-spacing:-.052em;}
+h1 em{color:var(--link);font-style:normal;}
+.c95bd74{max-width:70ch;margin:18px 0 0;color:var(--secondary);font-size:clamp(16px,1.5vw,18px);line-height:1.7;text-wrap:pretty;}
+.ce85ad1{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-block-start:24px;}
+.cfbffdc{display:inline-flex;min-height:44px;align-items:center;gap:8px;color:var(--secondary);font-size:13px;font-weight:500;text-decoration:none;}
+.cfbffdc:hover{color:var(--link);}
+.cfbffdc .ce232f7{width:16px;height:16px;}
+.cf0f7a5{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);max-width:calc(var(--rail) + var(--gap) + 72ch);align-items:start;column-gap:var(--gap);padding-block:40px 64px;font-size:17px;}
+.ccbeb1c{position:sticky;top:26px;grid-column:1;grid-row:1;min-width:0;}
+.c6fa2fa{margin-block-end:26px;}
+.c5f53ad{display:flex;min-height:44px;align-items:center;justify-content:space-between;gap:12px;padding-block:0 12px;list-style:none;color:var(--text);font-size:13px;font-weight:700;cursor:pointer;}
+.c5f53ad::-webkit-details-marker,.c53f229::-webkit-details-marker{display:none;}
+.c5f53ad::marker,.c53f229::marker{content:"";}
+.c70e9e0{display:inline-flex;align-items:center;gap:9px;}
+.c70e9e0 .ce232f7{width:17px;height:17px;color:var(--muted);}
+.c4d7409{width:14px;height:14px;color:var(--muted);transition:transform .18s ease;}
+.c6fa2fa[open] .c4d7409{transform:rotate(180deg);}
+.cd0d49e{max-height:min(44vh,420px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--line-strong) var(--bg);padding:4px 5px 5px 0;}
+.ca0729b{display:grid;gap:3px;margin:0;padding:0;list-style:none;}
+.toc-link{position:relative;display:grid;grid-template-columns:19px minmax(0,1fr);gap:10px;padding:10px 10px 10px 12px;border-inline-start:2px solid var(--line);border-radius:0 calc(var(--radius) * .3) calc(var(--radius) * .3) 0;color:var(--secondary);font-size:12px;line-height:1.55;text-decoration:none;}
+.toc-index{padding-block-start:1px;color:var(--muted);font-size:10px;font-variant-numeric:tabular-nums;}
+.toc-link:hover{background:var(--soft);color:var(--text);}
+.toc-link[aria-current="location"]{border-inline-start-color:var(--accent);background:var(--wash);color:var(--text);font-weight:600;}
+.toc-link[aria-current="location"] .toc-index{color:var(--link);}
+.cb37235{position:relative;padding:22px 19px 19px;border:1px solid var(--accent-line);border-radius:var(--radius);background:linear-gradient(145deg,var(--wash),var(--surface));box-shadow:var(--shadow);}
+.c8f9125{display:grid;width:34px;height:34px;margin-block-end:17px;place-items:center;border:1px solid var(--accent-line);border-radius:calc(var(--radius) * .45);color:var(--link);background:var(--surface);}
+.c08a0a9{margin:0 0 9px;font-family:var(--display),system-ui,sans-serif;font-size:21px;font-weight:600;letter-spacing:-.035em;line-height:1.25;text-wrap:balance;}
+.cfd3d45{margin:0 0 20px;color:var(--secondary);font-size:12px;line-height:1.75;}
+.cb37235 .c5ae0e3{width:100%;justify-content:space-between;padding-inline:16px;}
+.c08c415{grid-column:2;grid-row:1;width:100%;max-width:72ch;min-width:0;justify-self:start;font-size:17px;line-height:1.85;}
+.cc28325{margin-block-end:46px;border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow);}
+.cb42188{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 25px;border-block-end:1px solid var(--line);border-radius:var(--radius) var(--radius) 0 0;background:var(--wash);}
+.cb42188 h2{margin:0;font-size:19px;letter-spacing:-.025em;line-height:1.4;}
+.cb42188 .ce232f7{color:var(--link);}
+.c402eed{display:flex;align-items:center;gap:10px;}
+.cdbe48d{color:var(--secondary);font-size:11px;line-height:1.5;}
+.c6f2a49{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed;font-size:14px;line-height:1.65;}
+.c6f2a49 th,.c6f2a49 td{padding:15px 25px;text-align:start;vertical-align:top;overflow-wrap:anywhere;}
+.c6f2a49 th{width:36%;padding-inline-end:16px;color:var(--secondary);font-size:12px;font-weight:500;}
+.c6f2a49 td{padding-inline-start:8px;color:var(--text);font-weight:500;}
+.c6f2a49 tr + tr > *{border-block-start:1px solid var(--line);}
+.c6f2a49 tr:nth-child(even) > *{background:color-mix(in srgb,var(--bg) 44%,var(--surface));}
+.c6f2a49 tr:last-child th{border-end-start-radius:var(--radius);}
+.c6f2a49 tr:last-child td{border-end-end-radius:var(--radius);}
+.c6f2a49 p{margin:0;}
+.c6f2a49 a{font-weight:600;}
+#steps,.c771392,.cb9fec5{scroll-margin-block-start:28px;}
+.c771392{padding-block-end:39px;}
+.c771392 + .c771392{padding-block-start:34px;border-block-start:1px solid var(--line);}
+.cb9fec5{position:relative;margin:0 0 23px;padding-inline-start:18px;font-size:clamp(24px,2.5vw,30px);font-weight:600;letter-spacing:-.035em;line-height:1.3;}
+.cb9fec5::before{position:absolute;inset-block:.22em .2em;inset-inline-start:0;width:3px;border-radius:3px;background:var(--accent);content:"";}
+.c6fa367,.c48f0b0{color:var(--copy);}
+:is(.c6fa367,.c48f0b0) >:first-child{margin-block-start:0;}
+:is(.c6fa367,.c48f0b0) >:last-child{margin-block-end:0;}
+:is(.c6fa367,.c48f0b0) p{margin-block:0 20px;text-wrap:pretty;}
+.c6fa367 h3{margin:31px 0 12px;font-size:21px;line-height:1.4;letter-spacing:-.025em;}
+.c6fa367 h4{margin:26px 0 10px;font-size:17px;line-height:1.5;}
+:is(.c6fa367,.c48f0b0) strong{color:var(--text);font-weight:700;}
+:is(.c6fa367,.c48f0b0) em{color:var(--text);}
+:is(.c6fa367,.c48f0b0) a{text-decoration-color:var(--accent-line);text-decoration-thickness:1px;}
+:is(.c6fa367,.c48f0b0) a:hover{text-decoration-color:currentColor;}
+.c6fa367 mark{padding:.08em .23em;border-radius:3px;color:var(--text);background:color-mix(in srgb,var(--accent) 18%,var(--surface));}
+.c6fa367 hr{height:1px;margin-block:30px;border:0;background:var(--line);}
+:is(.c6fa367,.c48f0b0) ul{margin:20px 0 26px;padding-inline-start:23px;list-style:disc;}
+:is(.c6fa367,.c48f0b0) li{padding-inline-start:5px;margin-block:10px;}
+:is(.c6fa367,.c48f0b0) ul > li::marker{color:var(--link);font-size:.85em;}
+:is(.c6fa367,.c48f0b0) li > p{margin-block:0 10px;}
+:is(.c6fa367,.c48f0b0) li >:last-child{margin-block-end:0;}
+.c6fa367 li >:where(ul,ol),.c48f0b0 li >:where(ul,ol){margin-block:12px;}
+.c6fa367 ul ul{list-style:circle;}
+.c6fa367 ol,.c6fa367 ul.steps,.c6fa367 .steps > ul{margin:26px 0;padding:0;list-style:none;}
+.c6fa367 ol > li,.c6fa367 ul.steps > li,.c6fa367 .steps > ul > li{position:relative;min-height:76px;margin:12px 0;padding:21px 22px 21px 70px;border:1px solid var(--line);border-radius:calc(var(--radius) * .75);background:var(--surface);font-size:15px;line-height:1.8;}
+.c6fa367 ol > li{display:list-item;counter-increment:list-item;}
+.c6fa367 ol > li::before,.c6fa367 ul.steps > li::before,.c6fa367 .steps > ul > li::before{position:absolute;inset-block-start:21px;inset-inline-start:20px;display:grid;width:30px;height:30px;place-items:center;border:1px solid var(--accent-line);border-radius:calc(var(--radius) * .4);color:var(--link);background:var(--wash);content:counter(list-item,decimal-leading-zero);font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1;}
+.c6fa367 ul.steps,.c6fa367 .steps > ul{counter-reset:guide-step;}
+.c6fa367 ul.steps > li,.c6fa367 .steps > ul > li{counter-increment:guide-step;}
+.c6fa367 ul.steps > li::before,.c6fa367 .steps > ul > li::before{content:counter(guide-step,decimal-leading-zero);}
+.c6fa367 :where(ol,ul.steps,.steps > ul) > li > strong:first-child{display:block;margin-block-end:4px;font-size:16px;line-height:1.55;}
+.c6fa367 ol ol > li{min-height:0;padding:8px 0 8px 44px;border:0;background:transparent;}
+.c6fa367 ol ol > li::before{inset-block-start:8px;inset-inline-start:0;}
+:is(.c6fa367,.c48f0b0) table{width:100%;max-width:100%;margin:28px 0;border:1px solid var(--line-strong);border-radius:calc(var(--radius) * .75);border-collapse:separate;border-spacing:0;table-layout:fixed;background:var(--surface);font-size:13px;line-height:1.7;font-variant-numeric:tabular-nums;}
+:is(.c6fa367,.c48f0b0) caption{padding-block-end:12px;color:var(--secondary);font-size:12px;font-weight:500;text-align:start;caption-side:top;}
+.c6fa367 :where(th,td),.c48f0b0 :where(th,td){padding:15px 16px;vertical-align:top;text-align:start;overflow-wrap:anywhere;hyphens:auto;}
+:is(.c6fa367,.c48f0b0) th{color:var(--text);font-weight:600;}
+:is(.c6fa367,.c48f0b0) thead th{border-block-end:1px solid var(--accent-line);background:var(--wash);color:var(--link);font-size:12px;line-height:1.5;}
+:is(.c6fa367,.c48f0b0) thead tr:first-child th:first-child{border-start-start-radius:calc(var(--radius) * .75);}
+:is(.c6fa367,.c48f0b0) thead tr:first-child th:last-child{border-start-end-radius:calc(var(--radius) * .75);}
+:is(.c6fa367,.c48f0b0) tbody tr:nth-child(even){background:color-mix(in srgb,var(--bg) 55%,var(--surface));}
+:is(.c6fa367,.c48f0b0) tbody tr + tr > *{border-block-start:1px solid var(--line);}
+:is(.c6fa367,.c48f0b0) tbody th{font-size:12px;}
+.c6fa367 table :where(p,ul,ol),.c48f0b0 table :where(p,ul,ol){margin-block:0 8px;}
+.c6fa367 table :where(p,ul,ol):last-child,.c48f0b0 table :where(p,ul,ol):last-child{margin-block-end:0;}
+.c6fa367 blockquote{position:relative;margin:29px 0;padding:22px 26px;border-inline-start:3px solid var(--accent);border-radius:0 calc(var(--radius) * .65) calc(var(--radius) * .65) 0;color:var(--text);background:var(--wash);font-size:17px;line-height:1.85;}
+.c6fa367 blockquote p{margin-block-end:12px;}
+.c6fa367 blockquote >:last-child{margin-block-end:0;}
+.c6fa367 blockquote cite{display:block;margin-block-start:12px;color:var(--secondary);font-size:12px;font-style:normal;}
+.c6fa367 .takeaway{margin:28px 0;padding:23px 26px;border:1px solid var(--accent-line);border-block-start:3px solid var(--accent);border-radius:calc(var(--radius) * .75);background:var(--wash);color:var(--text);font-size:15px;line-height:1.8;}
+.c6fa367 .takeaway >:first-child{margin-block-start:0;}
+.c6fa367 .takeaway >:last-child{margin-block-end:0;}
+.c6fa367 .takeaway > strong:first-child,.c6fa367 .takeaway > h3:first-child{display:block;margin-block-end:9px;color:var(--link);font-size:15px;font-weight:700;letter-spacing:0;}
+.c6fa367 figure{margin:28px 0;}
+.c6fa367 figcaption{margin-block-start:10px;color:var(--secondary);font-size:12px;}
+.c6fa367 :where(code,kbd,samp),.c48f0b0 code{padding:.1em .3em;border-radius:4px;background:var(--soft);color:var(--text);font-size:.85em;}
+.c6fa367 pre{max-width:100%;padding:20px;border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;}
+.c6fa367 dt{color:var(--text);font-weight:700;}
+.c6fa367 dd{margin:6px 0 20px;}
+.c96a0b6{padding-block:34px 39px;border-block-start:1px solid var(--line);}
+.c5901c2{margin:-7px 0 23px;color:var(--secondary);font-size:14px;line-height:1.8;}
+.c6fff13{border-block-start:1px solid var(--line-strong);}
+.cf1aec2{border-block-end:1px solid var(--line-strong);}
+.c53f229{position:relative;display:flex;min-height:76px;align-items:center;justify-content:space-between;gap:22px;padding:23px 9px 23px 0;color:var(--text);list-style:none;cursor:pointer;font-size:16px;font-weight:600;line-height:1.6;transition:color .18s ease;}
+.c53f229::after{display:grid;width:28px;height:28px;flex-shrink:0;place-items:center;border:1px solid var(--line-strong);border-radius:50%;background:var(--surface);color:var(--secondary);content:"+";font-family:var(--body),system-ui,sans-serif;font-size:20px;font-weight:400;line-height:1;}
+.c53f229:hover{color:var(--link);}
+.c53f229:hover::after{border-color:var(--accent-line);background:var(--wash);color:var(--link);}
+.cf1aec2[open] .c53f229{color:var(--link);}
+.cf1aec2[open] .c53f229::after{border-color:var(--accent-line);background:var(--wash);color:var(--link);content:"−";}
+.c48f0b0{padding:0 48px 25px 0;font-size:15px;line-height:1.85;}
+.c48f0b0 ol{padding-inline-start:24px;}
+.c4e3272{padding-block:30px 0;border-block-start:1px solid var(--line);}
+.c4e3272 .cb9fec5{margin-block-end:16px;font-size:23px;}
+.cc436e4{margin:0;padding:0;list-style:none;counter-reset:source;}
+.cc436e4 li{position:relative;padding:13px 0 13px 30px;counter-increment:source;}
+.cc436e4 li + li{border-block-start:1px solid var(--line);}
+.cc436e4 li::before{position:absolute;inset-block-start:16px;inset-inline-start:0;color:var(--muted);content:counter(source,decimal-leading-zero);font-size:10px;font-variant-numeric:tabular-nums;line-height:1.8;}
+.c5e6e1b{display:inline;color:var(--secondary);font-size:13px;line-height:1.8;text-decoration:none;overflow-wrap:anywhere;}
+.c5e6e1b::after{margin-inline-start:7px;color:var(--link);content:"↗";}
+.c5e6e1b:hover{color:var(--link);text-decoration:underline;}
+.cc28325:not(:has(.c6f2a49)),.c96a0b6:not(:has(.cf1aec2)),.c4e3272:not(:has(.c5e6e1b)){display:none;}
+.c508ed5{padding-block:26px max(30px,env(safe-area-inset-bottom));border-block-start:1px solid var(--line);background:var(--soft);}
+.c58478c{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px 24px;}
+.c83e72e{display:flex;align-items:center;flex-wrap:wrap;gap:10px 22px;}
+.c8db877{color:var(--text);font-family:var(--display),system-ui,sans-serif;font-size:14px;font-weight:600;letter-spacing:-.025em;}
+.c879c5d{margin:0;color:var(--secondary);font-size:12px;}
+.cc80dff{display:inline-flex;min-height:44px;align-items:center;gap:10px;color:var(--secondary);font-size:12px;font-weight:500;text-decoration:none;}
+.cc80dff .ce232f7{width:15px;height:15px;}
+.c5042df{position:fixed;z-index:10;inset:auto 0 0;padding:11px 0 max(11px,env(safe-area-inset-bottom));border-block-start:1px solid var(--line-strong);background:color-mix(in srgb,var(--surface) 96%,transparent);box-shadow:0 -10px 36px -22px color-mix(in srgb,var(--text) 22%,transparent);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);}
+.cb5da0e{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.c662a86{display:flex;align-items:baseline;flex-wrap:wrap;gap:5px 16px;font-size:14px;}
+.c662a86 strong{color:var(--text);font-weight:600;}
+.cf71687{color:var(--secondary);font-size:12px;}
+.ccf82ed{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.ccf82ed .c5ae0e3{min-height:44px;min-width:142px;padding-block:10px;}
+.c2143dd{display:grid;width:36px;height:36px;padding:0;place-items:center;border:1px solid transparent;border-radius:calc(var(--radius) * .5);color:var(--secondary);background:transparent;cursor:pointer;}
+.c2143dd:hover{border-color:var(--line);background:var(--soft);color:var(--text);}
+body.has-sticky-cta{scroll-padding-block-end:90px;}
+body.has-sticky-cta :where(a,summary,button,[tabindex]){scroll-margin-block-end:96px;}
+@media (min-width:901px) and (max-height:740px){.ccbeb1c{top:18px;}
+.cd0d49e{max-height:29vh;}
+.c6fa2fa{margin-block-end:18px;}
+.cb37235{padding-block:17px;}
+.c8f9125{display:none;}
+}
+@media (max-width:1100px){:root{--rail:210px;--gap:38px;}
+.c5abc32{width:calc(100% - 48px);}
+.c08c415{font-size:16px;}
+.cb37235{padding-inline:17px;}
+}
+@media (max-width:900px){.c5abc32{width:min(calc(100% - 32px),760px);}
+.c0ea890{min-height:68px;}
+.c19624a{padding-block:22px 32px;}
+h1{max-width:23ch;font-size:clamp(34px,6vw,52px);}
+.cf0f7a5{grid-template-columns:minmax(0,1fr);max-width:760px;row-gap:24px;padding-block:24px 40px;}
+.ccbeb1c{display:contents;}
+.c6fa2fa{grid-column:1;grid-row:1;margin:0;border:1px solid var(--line-strong);border-radius:calc(var(--radius) * .7);background:var(--surface);}
+.c5f53ad{min-height:54px;padding:15px 18px;}
+.c6fa2fa[open] .c5f53ad{border-block-end:1px solid var(--line);}
+.cd0d49e{max-height:48vh;margin:9px 12px 12px;padding:4px;}
+.toc-link{padding-block:11px;font-size:13px;}
+.c08c415{grid-column:1;grid-row:2;max-width:72ch;justify-self:center;font-size:17px;}
+.cb37235{display:grid;grid-column:1;grid-row:3;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 30px;margin-block-start:8px;padding:26px;}
+.c8f9125{display:none;}
+.c08a0a9{margin:0;font-size:23px;}
+.cfd3d45{grid-column:1;margin:0;font-size:13px;}
+.cb37235 .c5ae0e3{grid-column:2;grid-row:1 / span 2;min-width:144px;}
+.cc28325{margin-block-end:35px;}
+.cf71687{display:none;}
+}
+@media (max-width:540px){.c2db15e{gap:12px;}
+.c82e1fd{display:none;}
+.c437275{gap:8px;font-size:18px;}
+.c64814e{width:29px;height:29px;}
+.c4cd3a2{min-width:88px;padding-inline:15px;}
+.c068048{gap:4px 7px;margin-block-end:22px;font-size:11px;}
+.ce6fd31{margin-block-end:15px;}
+h1{font-size:clamp(32px,8.4vw,43px);letter-spacing:-.045em;line-height:1.13;}
+.c95bd74{margin-block-start:16px;font-size:16px;}
+.ce85ad1{gap:10px 23px;margin-block-start:21px;}
+.c08c415{font-size:16px;line-height:1.85;}
+.cb42188{padding:17px;}
+.cb42188 h2{font-size:18px;}
+.cdbe48d{display:none;}
+.c6f2a49 th,.c6f2a49 td{padding:13px 17px;font-size:12px;}
+.c6f2a49 th{width:38%;padding-inline-end:8px;font-size:11px;}
+.c6f2a49 td{padding-inline-start:6px;font-size:13px;}
+.cb9fec5{margin-block-end:20px;padding-inline-start:15px;font-size:24px;letter-spacing:-.03em;}
+.c771392{padding-block-end:30px;}
+.c771392 + .c771392{padding-block-start:29px;}
+.c6fa367 h3{font-size:19px;}
+:is(.c6fa367,.c48f0b0) table{font-size:12px;}
+.c6fa367 :where(th,td),.c48f0b0 :where(th,td){padding:12px 9px;}
+:is(.c6fa367,.c48f0b0) thead th{font-size:11px;}
+.c6fa367 ol > li,.c6fa367 ul.steps > li,.c6fa367 .steps > ul > li{padding:18px 16px 18px 60px;font-size:14px;}
+.c6fa367 ol > li::before,.c6fa367 ul.steps > li::before,.c6fa367 .steps > ul > li::before{inset-block-start:19px;inset-inline-start:15px;width:28px;height:28px;}
+.c6fa367 blockquote,.c6fa367 .takeaway{padding:19px 20px;font-size:15px;}
+.c53f229{min-height:70px;gap:16px;padding-block:20px;font-size:15px;}
+.c48f0b0{padding-inline-end:12px;font-size:14px;}
+.cb37235{grid-template-columns:minmax(0,1fr);gap:12px;padding:24px;}
+.cb37235 .c5ae0e3{grid-column:1;grid-row:auto;margin-block-start:4px;}
+.cb5da0e{gap:10px;}
+.c662a86{font-size:13px;}
+.ccf82ed{gap:6px;}
+.ccf82ed .c5ae0e3{min-width:102px;gap:13px;padding-inline:15px;font-size:13px;}
+.c2143dd{width:32px;}
+.c83e72e{align-items:start;flex-direction:column;gap:4px;}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}
+*,*::before,*::after{transition:none !important;animation:none !important;}
+}
+@media (forced-colors:active){.c5ae0e3,.ce6fd31,.c64814e,.cb37235,.c53f229::after{border:1px solid currentColor;}
+.toc-link[aria-current="location"]{outline:1px solid currentColor;outline-offset:-1px;}
+.cb9fec5::before{border-inline-start:3px solid currentColor;}
+}
+@media print{
+.c5abc32{width:100%}
+.c7dff9b,.ccbeb1c,.ce85ad1,.c5042df,.c88fafc,.c254475,.cc80dff{display:none!important}
+.c19624a{padding-block:0 24px}
+h1{max-width:none;font-size:32pt}
+.cf0f7a5{display:block;max-width:none;padding-block:24px}
+.c08c415{max-width:none;font-size:11pt}
+.cb9fec5,.c6fa367 h3{break-after:avoid}
+.cc28325,.c6fa367 blockquote,.c6fa367 .takeaway,.cf1aec2{break-inside:avoid;box-shadow:none}
+.c53f229::after{display:none}
+.cf1aec2::details-content{content-visibility:visible}
+.cf1aec2>.c48f0b0{display:block}
+}
+</style>
 </head>
-<body>
-  <a class="c254475" href="#content">Skip to content</a>
-  <header class="ca4d353">
-    <nav class="c8cf5bd c5abc32" aria-label="Primary navigation">
-      <a class="c437275" href="#top" aria-label="Swap station, top of page">
-        <span class="c64814e" aria-hidden="true"><svg class="ce232f7" viewBox="0 0 24 24"><path d="M4 8h15m-4-4 4 4-4 4M20 16H5m4-4-4 4 4 4"/></svg></span>
-        Swap station
-      </a>
-      <div class="c2869b9">
-        <a href="#facts">Key facts</a>
-        <a href="#sources">Sources</a>
-        <a class="c5ae0e3" href="/dashboard/">Swap</a>
+<body id="top">
+  <a class="c254475" href="#article">Skip to the guide</a>
+  <div class="c88fafc" aria-hidden="true" hidden><span></span></div>
+
+  <header class="c7dff9b">
+    <div class="c5abc32 c0ea890">
+      <span class="c437275">
+        <span class="c64814e" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 7h9v9H5zm13 0h9v9h-9zM5 20h22v5H5z"/></svg></span>
+        Website
+      </span>
+      <div class="c2db15e">
+        <a class="c82e1fd" href="#article">Read the guide</a>
+        <a class="c5ae0e3 c4cd3a2" href="/dashboard/">Swap</a>
       </div>
-    </nav>
+    </div>
   </header>
-  <div class="c5abc32" id="top">
-    <div class="ca0d556"><nav class="c068048" aria-label="Breadcrumb"><a href="/dashboard/">Home</a> <span>/</span> <span>Swaps</span> <span>/</span> <span>Swap SOL to SUI</span></nav></div>
-    <section class="c19624a" aria-labelledby="hero-title">
-      <div class="cf13320">
-        <p class="ce6fd31">All swap routes</p>
-        <h1 id="hero-title">Swap SOL to <em>SUI</em></h1>
+
+  <main id="main">
+    <section class="c19624a c5abc32" aria-labelledby="guide-title">
+      <nav class="c068048" aria-label="Breadcrumb"><a href="/dashboard/">Home</a> <span>/</span> <span>Swaps</span> <span>/</span> <span>Swap SOL to SUI</span></nav>
+      <div class="c9249b6">
+        <p class="ce6fd31"><svg class="ce232f7" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6l2 2 2-2h6v15h-6l-2 2-2-2H4zM12 6v15"/></svg>The practical guide</p>
+        <h1 id="guide-title">Swap SOL to <em>SUI</em></h1>
         <p class="c95bd74">To swap SOL to SUI you move value cross-chain between two separate L1s, so the trade needs a bridge plus a DEX, or a single aggregator that stitches both together for you.</p>
-        <a class="c5ae0e3" href="/dashboard/">Swap <svg class="ce232f7" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        <div class="ce85ad1">
+          <a class="c5ae0e3" href="/dashboard/">Swap <span class="cb26bfe" aria-hidden="true">→</span></a>
+          <a class="cfbffdc" href="#steps" data-jump-steps>Jump to steps <svg class="ce232f7" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"/></svg></a>
+        </div>
       </div>
-      <aside class="c21d11d cdb2057" data-from="SOL" aria-labelledby="widget-title">
-        <div class="cec204e">
-          <h2 id="widget-title">Swap</h2>
-          <span class="c231c7a">Best route</span>
-        </div>
-        <div class="cd60fd2">
-          <div class="c17bb01"><span class="caf4899">You pay</span></div>
-          <div class="c9503af">
-            <input id="pay-amount" class="c1ffdae" type="number" inputmode="decimal" min="0" max="1000000000" step="any" value="1" aria-label="Amount you pay">
-            <span class="cf45d9b">
-              <img class="c85eacf" id="pay-ico" width="22" height="22" alt="" src="assets/tokens/eth.svg">
-              <select id="pay-token" class="c8346bc" aria-label="Token you pay"></select>
-            </span>
-          </div>
-          <div class="c46c506" id="pay-usd">—</div>
-        </div>
-        <button type="button" class="c99e035" id="swap-switch" aria-label="Switch the two tokens">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v13m0 0-3-3m3 3 3-3M17 20V7m0 0-3 3m3-3 3 3"/></svg>
-        </button>
-        <div class="cd60fd2">
-          <div class="c17bb01"><span class="caf4899">You receive</span></div>
-          <div class="c9503af">
-            <output id="get-amount" class="c1ffdae" for="pay-amount">—</output>
-            <span class="cf45d9b">
-              <img class="c85eacf" id="get-ico" width="22" height="22" alt="" src="assets/tokens/usdt.svg">
-              <select id="get-token" class="c8346bc" aria-label="Token you receive"></select>
-            </span>
-          </div>
-          <div class="c46c506" id="get-usd">—</div>
-        </div>
-        <dl class="cd162a0">
-          <div><dt>Rate</dt><dd id="swap-rate">—</dd></div>
-          <div><dt>Network fee</dt><dd id="swap-fee">0.3%</dd></div>
-        </dl>
-        <noscript><p class="c01099e">Enable JavaScript to estimate the swap.</p></noscript>
-        <a class="c5ae0e3" href="/dashboard/">Swap <svg class="ce232f7" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
-      </aside>
     </section>
-    <section class="ca2e105" id="facts" aria-labelledby="facts-title">
-      <h2 class="c67c533" id="facts-title">Key facts</h2>
-      <div class="c336a35"><table class="c6f2a49"><tbody><tr><th scope="row">From chain</th><td>Solana — SVM, parallel execution</td></tr>
+
+    <div class="c5abc32 cf0f7a5">
+      <aside class="ccbeb1c" aria-label="Guide navigation and next step">
+        <details class="c6fa2fa" hidden>
+          <summary class="c5f53ad">
+            <span class="c70e9e0"><svg class="ce232f7" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg>On this page</span>
+            <svg class="ce232f7 c4d7409" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <nav class="cd0d49e" aria-label="Table of contents"><ol class="ca0729b"></ol></nav>
+        </details>
+        <section class="cb37235" aria-labelledby="next-step-title">
+          <span class="c8f9125" aria-hidden="true"><svg class="ce232f7" viewBox="0 0 24 24"><path d="M5 17 17 5M6 5h11v11M5 5v14h14"/></svg></span>
+          <h2 class="c08a0a9" id="next-step-title">Put the guide into practice.</h2>
+          <p class="cfd3d45">Your next step starts in the dashboard.</p>
+          <a class="c5ae0e3" href="/dashboard/">Swap <span class="cb26bfe" aria-hidden="true">→</span></a>
+        </section>
+      </aside>
+
+      <article class="c08c415" id="article" aria-labelledby="guide-title" tabindex="-1">
+        <section class="cc28325" aria-labelledby="facts-title">
+          <div class="cb42188">
+            <div class="c402eed"><svg class="ce232f7" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v3H8zM8 5H5v16h14V5h-3M8 12h8M8 16h5"/></svg><h2 id="facts-title">At a glance</h2></div>
+            <span class="cdbe48d">The key facts</span>
+          </div>
+          <table class="c6f2a49"><tbody><tr><th scope="row">From chain</th><td>Solana — SVM, parallel execution</td></tr>
 <tr><th scope="row">To chain</th><td>Sui — object-centric Move L1</td></tr>
 <tr><th scope="row">Bridge layer</th><td>Wormhole (Solana ↔ Sui messaging)</td></tr>
 <tr><th scope="row">Main cost</th><td>The bridge hop, not gas or swap fees</td></tr>
 <tr><th scope="row">Receive side</th><td>A Sui wallet (Suiet, Slush, Phantom)</td></tr>
-<tr><th scope="row">Custody</th><td>Self-custody across both chains</td></tr></tbody></table></div>
-    </section>
-  </div>
-  <main class="c08c415 c5abc32" id="content">
-    <section class="c771392"><h2 class="cb9fec5">What It Means to Swap SOL to SUI</h2><div class="c6fa367"><strong>SOL and SUI live on two different blockchains, so you cannot trade one for the other inside a single pool the way you would two tokens on the same network.</strong> SOL is the gas and settlement asset of Solana, an SVM chain built around parallel transaction execution; SUI is the native asset of Sui, a Move chain that treats every asset as an individually owned object. Moving between them is a cross-chain operation: value leaves Solana, crosses a bridge that relays the message between the two networks, and arrives as SUI on the Sui side. The good news is that both chains are among the cheapest and fastest in production, so the swap and gas legs barely register. The cost that matters is the bridge hop, which is why choosing the right route is the whole game here.<h3>Two non-EVM L1s, one move</h3>Neither chain is EVM-compatible, so this is not a typical Ethereum-style bridge-and-wrap. You are crossing from the Solana Virtual Machine to the Move object model, two genuinely different execution designs. A bridge handles the message relay between them, and a DEX on one side or the other handles the actual token conversion.<h3>Why a Sui wallet comes first</h3>SUI arrives at a Sui address, and a Solana wallet cannot hold it, so set up a Sui-native wallet before you move anything. Have the destination address ready and copied correctly; a cross-chain delivery goes exactly where you send it, with no central party to reverse a mistyped address.</div></section>
+<tr><th scope="row">Custody</th><td>Self-custody across both chains</td></tr></tbody></table>
+        </section>
+
+        <div id="steps" tabindex="-1">
+          <section class="c771392"><h2 class="cb9fec5">What It Means to Swap SOL to SUI</h2><div class="c6fa367"><strong>SOL and SUI live on two different blockchains, so you cannot trade one for the other inside a single pool the way you would two tokens on the same network.</strong> SOL is the gas and settlement asset of Solana, an SVM chain built around parallel transaction execution; SUI is the native asset of Sui, a Move chain that treats every asset as an individually owned object. Moving between them is a cross-chain operation: value leaves Solana, crosses a bridge that relays the message between the two networks, and arrives as SUI on the Sui side. The good news is that both chains are among the cheapest and fastest in production, so the swap and gas legs barely register. The cost that matters is the bridge hop, which is why choosing the right route is the whole game here.<h3>Two non-EVM L1s, one move</h3>Neither chain is EVM-compatible, so this is not a typical Ethereum-style bridge-and-wrap. You are crossing from the Solana Virtual Machine to the Move object model, two genuinely different execution designs. A bridge handles the message relay between them, and a DEX on one side or the other handles the actual token conversion.<h3>Why a Sui wallet comes first</h3>SUI arrives at a Sui address, and a Solana wallet cannot hold it, so set up a Sui-native wallet before you move anything. Have the destination address ready and copied correctly; a cross-chain delivery goes exactly where you send it, with no central party to reverse a mistyped address.</div></section>
 <section class="c771392"><h2 class="cb9fec5">Routes to Swap SOL to SUI</h2><div class="c6fa367">There are three practical ways to get from SOL to SUI, and they trade off speed, cost and how many steps you touch. An aggregator hides the complexity behind one signature; a manual bridge-and-swap gives you control over each leg; a centralized exchange skips on-chain bridging entirely but asks you to sign up. The table lays out how they compare before you commit.<table><thead><tr><th>Route</th><th>Speed</th><th>Fees</th><th>Hops</th></tr></thead><tbody><tr><td>Cross-chain aggregator</td><td>~1–5 min</td><td>Low swap + bridge spread</td><td>1 signature, auto-routed</td></tr><tr><td>Wormhole bridge + Cetus DEX</td><td>~2–10 min</td><td>Bridge fee + 2 swap fees</td><td>3 manual steps</td></tr><tr><td>Centralized exchange</td><td>Minutes to hours</td><td>Trading + withdrawal fee</td><td>Sign-up, deposit, withdraw</td></tr></tbody></table><h3>Aggregator: one signature, auto-routed</h3>A cross-chain swap aggregator reads liquidity on both sides, picks a bridge, and bundles the SOL sell, the bridge hop and the SUI buy into a single flow you approve once. It is the fastest path for most people because you never manually touch the bridge interface. You still pay the underlying bridge spread, but it is folded into the quote so you see the net SUI you will receive up front.<h3>Bridge plus swap: more control</h3>Doing it by hand means bridging a liquid asset such as USDC from Solana to Sui through Wormhole, then swapping that for SUI on a Sui DEX like Cetus. It is more steps and two swap fees, but you see each leg settle and can stop between them. This is the route to use when you want to verify the bridged balance landed before converting it.</div></section>
 <section class="c771392"><h2 class="cb9fec5">Why SOL and SUI Are Both Cheap and Fast</h2><div class="c6fa367">Both ends of this trade are high-throughput, low-fee chains, which is why the swap legs cost almost nothing and the bridge dominates your total. Solana parallelizes transactions across cores and settles in well under a second; Sui parallelizes by treating assets as independent objects that do not contend for one global state. The table contrasts the two so you can see why neither chain is the expensive part.<table><thead><tr><th>Property</th><th>Solana (SOL)</th><th>Sui (SUI)</th></tr></thead><tbody><tr><td>Execution model</td><td>SVM, parallel across accounts</td><td>Move, object-centric parallel</td></tr><tr><td>Finality</td><td>Sub-second</td><td>Sub-second</td></tr><tr><td>Typical gas cost</td><td>Fractions of a cent</td><td>Fractions of a cent</td></tr><tr><td>Gas / native token</td><td>SOL</td><td>SUI</td></tr><tr><td>EVM compatible</td><td>No</td><td>No</td></tr></tbody></table><h3>The swap legs are nearly free</h3>Selling SOL on a Solana DEX and buying SUI on a Sui DEX each cost a small pool fee plus negligible gas. On two chains this cheap, those fees round to noise next to the bridge. That is why optimizing the bridge leg, not the swap legs, is where you save money on this route.<h3>The bridge is the real cost</h3>Crossing between chains means paying a relayer or liquidity-network fee and accepting a spread on whatever asset the bridge moves. Expect this to be the largest single line item in your swap. Comparing the net SUI received across two or three routes before signing is the single most effective thing you can do to keep more of your SOL's value.</div></section>
 <section class="c771392"><h2 class="cb9fec5">Swap SOL to SUI Step by Step</h2><div class="c6fa367">Whether you use an aggregator or go manual, the shape of the process is the same: prepare the Sui side, choose a route, confirm the net output, and verify arrival. Here is the full flow for the most common path.<ul><li>Set up a Sui wallet (Suiet, Slush or Phantom's Sui support) and copy your Sui receiving address.</li><li>Connect your Solana wallet holding SOL to a cross-chain aggregator or the Wormhole bridge.</li><li>Choose SOL as the source and SUI as the destination, and paste your Sui address as the recipient.</li><li>Read the quote: the SUI amount you will receive after bridge and swap fees, plus the estimated time.</li><li>Set slippage, confirm the gas estimate in SOL, and sign the transaction in your Solana wallet.</li><li>Wait for bridge finality, then open your Sui wallet and confirm the SUI balance has landed.</li></ul></div></section>
 <section class="c771392"><h2 class="cb9fec5">Timing, Finality, and the Amount You Keep</h2><div class="c6fa367">Both chains confirm in under a second, so the clock you are watching is the bridge's finality window, not the swap. Judge any route by the net SUI it delivers, not the headline rate.<h3>What sets the wait</h3>An aggregator using a fast liquidity network can finish in a minute or two; a message-passing bridge that waits for source-chain finality can take longer during congestion. The quote's time estimate reflects which mechanism the route uses, so read it before you expect instant arrival.<h3>Reading the amount after fees</h3>The number that matters is the minimum SUI received shown before you sign, after the bridge spread and both swap fees come out. A route with a tempting rate but a thin bridge pool can net you less than a plainer one, so compare the final delivered figure, not the advertised exchange rate.<h3>Keeping a little gas on each side</h3>You need a small amount of SOL left on Solana to pay for the outbound transaction, and once SUI lands you will want a sliver of it for any future Sui transaction. Do not sweep every last unit; leave enough native token on both chains to move again.</div></section>
 <section class="c771392"><h2 class="cb9fec5">Getting a Sui Wallet Ready</h2><div class="c6fa367">Because SUI settles to a Sui address, a working Sui wallet is a hard prerequisite, not an afterthought. Several self-custody options support the chain, including Suiet and the Slush wallet built for Sui, and Phantom has added Sui alongside its Solana support, which is convenient if you already hold SOL there. Create the wallet, write the recovery phrase down offline, and send a tiny test amount first if you are moving size. You can confirm anything that arrives directly on the <a href="https://suiscan.xyz/" rel="nofollow noopener" target="_blank">Sui network explorer</a> by pasting your address, and the chain's own <a href="https://docs.sui.io/" rel="nofollow noopener" target="_blank">documentation</a> covers wallet setup and the object model in full. No wallet, DEX or bridge ever needs your recovery phrase to deliver a swap; anyone who asks for it is attempting fraud.<h3>Address format matters</h3>A Sui address is not a Solana address, and pasting the wrong one sends your SUI into nowhere recoverable. Copy the receiving address straight from your Sui wallet rather than typing it, and confirm the first and last characters match before you approve the route.</div></section>
 <section class="c771392"><h2 class="cb9fec5">Swapping SOL to SUI vs Same-Chain Trades</h2><div class="c6fa367">A same-chain swap trades two tokens in one pool and settles in a single step; crossing from Solana to Sui adds the bridge in the middle, which is the one piece that introduces real cost and waiting. Everything else about the trade stays self-custody: your SOL never passes to a party that could hold it, and your SUI lands straight in a wallet you control. You can verify both legs independently, checking the Solana side on <a href="https://solscan.io/" rel="nofollow noopener" target="_blank">Solscan</a> and the Sui side on <a href="https://suiscan.xyz/" rel="nofollow noopener" target="_blank">Suiscan</a>, and the bridge layer's own mechanics are documented by <a href="https://wormhole.com/" rel="nofollow noopener" target="_blank">Wormhole</a>. Treat the bridge as the part to scrutinize and the two swap legs as the cheap, fast ends they are, and the whole route becomes predictable once you have run it once.</div></section><section class="c771392 ce59c4f" id="cluster"><h2 class="cb9fec5">More in this series</h2><div class="c6fa367"><ul><li><a href="/">Sui Swap</a></li><li><a href="/swap-usdc-to-sui/">Swap USDC to SUI</a></li><li><a href="/swap-usdt-to-sui/">Swap USDT to SUI</a></li><li><a href="/swap-eth-to-sui/">Swap ETH to SUI</a></li></ul></div></section>
-    <details class="cf1aec2"><summary class="c53f229">Can I swap SOL to SUI in a single step?</summary><div class="c48f0b0">Yes, with a cross-chain aggregator that bundles the SOL sell, the bridge hop and the SUI buy into one signature. It routes through a bridge underneath, but you approve the whole path once and see the net SUI up front.</div></details>
+        </div>
+
+        <section class="c96a0b6" aria-labelledby="faq-title">
+          <h2 class="cb9fec5" id="faq-title">Frequently asked questions</h2>
+          <p class="c5901c2">A closer look at the details.</p>
+          <div class="c6fff13"><details class="cf1aec2"><summary class="c53f229">Can I swap SOL to SUI in a single step?</summary><div class="c48f0b0">Yes, with a cross-chain aggregator that bundles the SOL sell, the bridge hop and the SUI buy into one signature. It routes through a bridge underneath, but you approve the whole path once and see the net SUI up front.</div></details>
 <details class="cf1aec2"><summary class="c53f229">Why can't SOL and SUI trade in one pool?</summary><div class="c48f0b0">They live on separate blockchains, Solana and Sui, so there is no shared pool holding both. The swap has to cross a bridge that relays value between the two networks, which is why it is a cross-chain move rather than a normal DEX trade.</div></details>
 <details class="cf1aec2"><summary class="c53f229">What is the main cost of swapping SOL to SUI?</summary><div class="c48f0b0">The bridge hop. Both chains are so cheap that gas and the swap fees round to noise; the bridge's relayer fee and asset spread are the largest line item, so comparing routes by net SUI received is what saves you money.</div></details>
 <details class="cf1aec2"><summary class="c53f229">How long does swapping SOL to SUI take?</summary><div class="c48f0b0">Often one to a few minutes with a fast aggregator, longer if the route uses a bridge that waits for source-chain finality during congestion. Both chains confirm sub-second, so the wait is the bridge window, not the swaps.</div></details>
 <details class="cf1aec2"><summary class="c53f229">Do I need a Sui wallet to receive SUI?</summary><div class="c48f0b0">Yes. SUI settles to a Sui address, which a Solana wallet cannot hold. Set up a Sui-native wallet such as Suiet or Slush, or use Phantom's Sui support, and have the receiving address ready before you start.</div></details>
 <details class="cf1aec2"><summary class="c53f229">Do I need an account to swap SOL to SUI on-chain?</summary><div class="c48f0b0">No. Aggregator and bridge routes are self-custody with no sign-up; you connect a wallet and sign. A centralized exchange is the one path that requires a sign-up, since it holds funds during the transfer.</div></details>
-<details class="cf1aec2"><summary class="c53f229">Which bridge connects Solana and Sui?</summary><div class="c48f0b0">Wormhole provides the messaging layer between Solana and Sui, which most aggregators and manual routes rely on. You can bridge a liquid asset like USDC across it, then swap that for SUI on a Sui DEX such as Cetus.</div></details>
-  </main>
-  <section class="c1e8a36 c5abc32" id="sources" aria-labelledby="sources-title">
-    <h2 class="c67c533" id="sources-title">Sources</h2>
-    <ul class="cc436e4"><li><a class="c5e6e1b" href="https://sui.io/" rel="nofollow noopener" target="_blank">Sui — official site</a></li>
+<details class="cf1aec2"><summary class="c53f229">Which bridge connects Solana and Sui?</summary><div class="c48f0b0">Wormhole provides the messaging layer between Solana and Sui, which most aggregators and manual routes rely on. You can bridge a liquid asset like USDC across it, then swap that for SUI on a Sui DEX such as Cetus.</div></details></div>
+        </section>
+
+        <section class="c4e3272" aria-labelledby="sources-title">
+          <h2 class="cb9fec5" id="sources-title">Sources &amp; further reading</h2>
+          <ul class="cc436e4"><li><a class="c5e6e1b" href="https://sui.io/" rel="nofollow noopener" target="_blank">Sui — official site</a></li>
 <li><a class="c5e6e1b" href="https://docs.sui.io/" rel="nofollow noopener" target="_blank">Sui documentation</a></li>
 <li><a class="c5e6e1b" href="https://solana.com/" rel="nofollow noopener" target="_blank">Solana — official site</a></li>
 <li><a class="c5e6e1b" href="https://wormhole.com/" rel="nofollow noopener" target="_blank">Wormhole bridge</a></li>
 <li><a class="c5e6e1b" href="https://suiscan.xyz/" rel="nofollow noopener" target="_blank">Suiscan — Sui explorer</a></li>
 <li><a class="c5e6e1b" href="https://solscan.io/" rel="nofollow noopener" target="_blank">Solscan — Solana explorer</a></li>
 <li><a class="c5e6e1b" href="https://www.coingecko.com/" rel="nofollow noopener" target="_blank">CoinGecko</a></li></ul>
-  </section>
-  <footer class="ccaa5ee">
-    <div class="c58478c c5abc32">
-      <p>Updated Oct 12, 2026</p>
-      <a href="#top">Back to top ↑</a>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="c508ed5">
+    <div class="c5abc32 c58478c">
+      <div class="c83e72e"><span class="c8db877">Website</span><p class="c879c5d">Updated Oct 14, 2026</p></div>
+      <a class="cc80dff" href="#top">Back to top <svg class="ce232f7" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V4m-6 6 6-6 6 6"/></svg></a>
     </div>
   </footer>
+
+  <aside class="c5042df" aria-label="Continue to the dashboard" hidden>
+    <div class="c5abc32 cb5da0e">
+      <div class="c662a86"><strong>Ready to go?</strong><span class="cf71687">Put what you’ve learned into practice.</span></div>
+      <div class="ccf82ed">
+        <a class="c5ae0e3" href="/dashboard/">Swap <span class="cb26bfe" aria-hidden="true">→</span></a>
+        <button class="c2143dd" type="button" aria-label="Dismiss the bottom bar"><svg class="ce232f7" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      </div>
+    </div>
+  </aside>
+
   <script>
     (() => {
-      const TOKENS = [
-        { s: 'ETH', f: 'eth', p: 2550 }, { s: 'BTC', f: 'btc', p: 62000 },
-        { s: 'USDT', f: 'usdt', p: 1 }, { s: 'USDC', f: 'usdc', p: 1 },
-        { s: 'BNB', f: 'bnb', p: 585 }, { s: 'SOL', f: 'sol', p: 145 },
-        { s: 'ARB', f: 'arb', p: 0.62 }, { s: 'OP', f: 'optimism', p: 1.65 },
-        { s: 'MATIC', f: 'polygon', p: 0.42 }, { s: 'AVAX', f: 'avalanche', p: 27 },
-        { s: 'SUI', f: 'sui', p: 1.35 }, { s: 'LTC', f: 'ltc', p: 72 },
-        { s: 'TRX', f: 'trx', p: 0.16 }, { s: 'XMR', f: 'xmr', p: 155 },
-        { s: 'XRP', f: 'xrp', p: 0.52 }, { s: 'ZEC', f: 'zec', p: 32 }
-      ];
-      const FEE = 0.003;
-      const $ = (id) => document.getElementById(id);
-      const payAmt = $('pay-amount'), payTok = $('pay-token'), payUsd = $('pay-usd'), payIco = $('pay-ico');
-      const getAmt = $('get-amount'), getTok = $('get-token'), getUsd = $('get-usd'), getIco = $('get-ico');
-      const rateEl = $('swap-rate');
-      const tok = (s) => TOKENS.find((t) => t.s === s);
-      const num = (n) => new Intl.NumberFormat('en', { maximumFractionDigits: n >= 1 ? 4 : 6 }).format(n);
-      const usd = (v) => '~$' + new Intl.NumberFormat('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v);
-      TOKENS.forEach((t) => {
-        [payTok, getTok].forEach((sel) => { const o = document.createElement('option'); o.value = t.s; o.textContent = t.s; sel.appendChild(o); });
+      'use strict';
+
+      const article = document.querySelector('.c08c415');
+      const toc = document.querySelector('.c6fa2fa');
+      const list = document.querySelector('.ca0729b');
+      const hero = document.querySelector('.c19624a');
+      const footer = document.querySelector('.c508ed5');
+      const bar = document.querySelector('.c5042df');
+      const progress = document.querySelector('.c88fafc');
+      const progressFill = progress.firstElementChild;
+      const mobile = window.matchMedia('(max-width: 900px)');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const headings = Array.from(article.querySelectorAll('h2.cb9fec5'))
+        .filter(heading => heading.getClientRects().length > 0);
+      const usedIds = new Set(Array.from(document.querySelectorAll('[id]'), node => node.id));
+      const links = [];
+      let activeIndex = -1;
+      let dismissed = false;
+      let framePending = false;
+      let positions = [];
+      let articleStart = 0;
+      let articleEnd = 0;
+      let heroEnd = 0;
+      let footerStart = 0;
+
+      headings.forEach((heading, index) => {
+        if (!heading.id) {
+          const slug = heading.textContent.trim().toLowerCase()
+            .normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+          const base = 'section-' + (slug || String(index + 1));
+          let id = base;
+          let suffix = 2;
+          while (usedIds.has(id)) id = base + '-' + suffix++;
+          heading.id = id;
+          usedIds.add(id);
+        }
+        heading.tabIndex = -1;
+        const item = document.createElement('li');
+        const link = document.createElement('a');
+        const number = document.createElement('span');
+        const label = document.createElement('span');
+        link.className = 'toc-link';
+        link.href = '#' + encodeURIComponent(heading.id);
+        number.className = 'toc-index';
+        number.setAttribute('aria-hidden', 'true');
+        number.textContent = String(index + 1).padStart(2, '0');
+        label.textContent = heading.textContent.trim();
+        link.append(number, label);
+        item.append(link);
+        list.append(item);
+        links.push(link);
+        link.addEventListener('click', event => navigate(event, heading));
       });
-      const widget = document.querySelector('.cdb2057');
-      const defFrom = (widget && widget.dataset.from) || 'ETH';
-      const fromOk = TOKENS.some((t) => t.s === defFrom) ? defFrom : 'ETH';
-      payTok.value = fromOk;
-      getTok.value = (fromOk === 'USDT') ? 'ETH' : 'USDT';
-      const calc = () => {
-        const pf = tok(payTok.value), gt = tok(getTok.value);
-        payIco.src = 'assets/tokens/' + pf.f + '.svg'; payIco.alt = pf.s;
-        getIco.src = 'assets/tokens/' + gt.f + '.svg'; getIco.alt = gt.s;
-        rateEl.textContent = '1 ' + pf.s + ' ≈ ' + num(pf.p / gt.p) + ' ' + gt.s;
-        const a = parseFloat(payAmt.value);
-        if (!Number.isFinite(a) || a <= 0) { getAmt.textContent = '—'; payUsd.textContent = '—'; getUsd.textContent = '—'; return; }
-        const out = a * (pf.p / gt.p) * (1 - FEE);
-        getAmt.textContent = num(out) + ' ' + gt.s;
-        payUsd.textContent = usd(a * pf.p);
-        getUsd.textContent = usd(out * gt.p);
-      };
-      const distinct = (changed, other) => { if (changed.value === other.value) { other.value = (TOKENS.find((t) => t.s !== changed.value) || TOKENS[0]).s; } };
-      payAmt.addEventListener('input', calc);
-      payTok.addEventListener('change', () => { distinct(payTok, getTok); calc(); });
-      getTok.addEventListener('change', () => { distinct(getTok, payTok); calc(); });
-      $('swap-switch').addEventListener('click', () => { const t = payTok.value; payTok.value = getTok.value; getTok.value = t; calc(); });
-      calc();
+
+      if (headings.length) {
+        toc.hidden = false;
+        toc.open = !mobile.matches;
+      }
+      const syncToc = () => { toc.open = !mobile.matches; scheduleMeasure(); };
+      mobile.addEventListener('change', syncToc);
+
+      const jump = document.querySelector('[data-jump-steps]');
+      const contentHeadings = headings.filter(heading => heading.closest('#steps'));
+      const stepHeading = contentHeadings.find(heading =>
+        /\b(steps?|step-by-step|how to|walkthrough|getting started)\b/i.test(heading.textContent)
+      ) || contentHeadings.find(heading =>
+        heading.closest('.c771392')?.querySelector('ol, ul.steps, .steps > ul')
+      ) || contentHeadings[0];
+      if (stepHeading) {
+        jump.href = '#' + encodeURIComponent(stepHeading.id);
+        jump.addEventListener('click', event => navigate(event, stepHeading));
+      }
+
+      function navigate(event, target) {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        if (mobile.matches) toc.open = false;
+        const hash = '#' + encodeURIComponent(target.id);
+        if (window.location.hash !== hash) {
+          try { window.history.pushState(null, '', hash); }
+          catch (_) { window.location.hash = hash; }
+        }
+        target.focus({ preventScroll: true });
+        target.scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth', block: 'start' });
+        scheduleMeasure();
+      }
+
+      function measure() {
+        const scroll = window.scrollY;
+        positions = headings.map(heading => heading.getBoundingClientRect().top + scroll);
+        const bounds = article.getBoundingClientRect();
+        articleStart = bounds.top + scroll;
+        articleEnd = bounds.bottom + scroll;
+        heroEnd = hero.getBoundingClientRect().bottom + scroll;
+        footerStart = footer.getBoundingClientRect().top + scroll;
+        update();
+      }
+
+      function update() {
+        framePending = false;
+        const scroll = window.scrollY;
+        const viewport = window.innerHeight;
+        const readDistance = Math.max(1, articleEnd - articleStart - viewport);
+        const fraction = Math.min(1, Math.max(0, (scroll - articleStart) / readDistance));
+        progressFill.style.transform = 'scaleX(' + fraction + ')';
+
+        let next = -1;
+        const readingLine = scroll + Math.min(150, viewport * .24);
+        for (let index = 0; index < positions.length; index++) {
+          if (positions[index] <= readingLine) next = index;
+          else break;
+        }
+        if (scroll + viewport >= document.documentElement.scrollHeight - 2) next = headings.length - 1;
+        if (next !== activeIndex) {
+          if (activeIndex >= 0) links[activeIndex].removeAttribute('aria-current');
+          if (next >= 0) {
+            const link = links[next];
+            link.setAttribute('aria-current', 'location');
+            if (toc.open) {
+              const nav = document.querySelector('.cd0d49e');
+              const itemBounds = link.getBoundingClientRect();
+              const navBounds = nav.getBoundingClientRect();
+              if (itemBounds.top < navBounds.top || itemBounds.bottom > navBounds.bottom) {
+                nav.scrollTop += itemBounds.top - navBounds.top - nav.clientHeight / 2 + link.offsetHeight / 2;
+              }
+            }
+          }
+          activeIndex = next;
+        }
+
+        const shouldShow = !dismissed && scroll > heroEnd && scroll + viewport < footerStart + 16;
+        const keepFocus = !dismissed && bar.contains(document.activeElement);
+        const showBar = shouldShow || keepFocus;
+        if (bar.hidden === showBar) {
+          bar.hidden = !showBar;
+          document.body.classList.toggle('has-sticky-cta', showBar);
+        }
+      }
+
+      function scheduleUpdate() {
+        if (!framePending) {
+          framePending = true;
+          window.requestAnimationFrame(update);
+        }
+      }
+
+      let measurePending = false;
+      function scheduleMeasure() {
+        if (!measurePending) {
+          measurePending = true;
+          window.requestAnimationFrame(() => { measurePending = false; measure(); });
+        }
+      }
+
+      bar.querySelector('.c2143dd').addEventListener('click', () => {
+        dismissed = true;
+        const target = headings[Math.max(0, activeIndex)] || article;
+        target.focus({ preventScroll: true });
+        update();
+      });
+      bar.addEventListener('focusout', scheduleUpdate);
+      toc.addEventListener('toggle', scheduleMeasure);
+      article.addEventListener('toggle', scheduleMeasure, true);
+      window.addEventListener('scroll', scheduleUpdate, { passive: true });
+      window.addEventListener('resize', scheduleMeasure, { passive: true });
+      window.addEventListener('pageshow', scheduleMeasure);
+      if ('ResizeObserver' in window) {
+        const observer = new ResizeObserver(scheduleMeasure);
+        observer.observe(article);
+        observer.observe(hero);
+        observer.observe(document.querySelector('.cf0f7a5'));
+      }
+      if (document.fonts) document.fonts.ready.then(scheduleMeasure);
+
+      function restoreFragment() {
+        let id;
+        try { id = decodeURIComponent(window.location.hash.slice(1)); }
+        catch (_) { return; }
+        const target = document.getElementById(id);
+        if (target && headings.includes(target)) {
+          target.scrollIntoView({ behavior: 'instant', block: 'start' });
+        }
+        scheduleMeasure();
+      }
+      window.addEventListener('popstate', restoreFragment);
+      window.addEventListener('hashchange', restoreFragment);
+      progress.hidden = false;
+      measure();
+      if (window.location.hash) window.requestAnimationFrame(restoreFragment);
     })();
   </script>
 </body>
