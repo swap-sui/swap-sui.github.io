@@ -1,3 +1,0 @@
-# Swap USDT to SUI
-
-Swap USDT to SUI by first picking the right Tether network, then routing into SUI on a Sui DEX or across a bridge. Compare TRC-20, ERC-20 and native Sui USDT, weigh fees and speed, and see the amount you keep after every cost before you sign.

@@ -1,3 +1,0 @@
-# Swap ETH to SUI
-
-Swap ETH to SUI in two legs: bridge Ethereum value to Sui, then trade into SUI on-chain. Compare aggregator, bridge-plus-DEX and CEX routes by speed and fees.
